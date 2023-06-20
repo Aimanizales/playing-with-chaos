@@ -1,10 +1,8 @@
 var chaos = (function() {
-
 	return {
-
 		/**
-		 * Initializes chaos by finding the canvas on the page and resizing it to the
-		 * full size of the browser.
+		 * Initializes chaos by finding the canvas on the page and resizing 
+		 * it to the full size of the browser.
 		 */
 		init: function() {
 			this.canvas = document.getElementById("canvas");
@@ -22,11 +20,10 @@ var chaos = (function() {
 		 * pixels if no color is specified.
 		 */
 		clear: function(color) {
-			if(color) {
+			if (color) {
 				this.context.fillStyle = color;
 				this.context.fillRect(0, 0, this.width, this.height);
-			}
-			else {
+			} else {
 				this.context.clearRect(0, 0, this.width, this.height);
 			}
 		},
@@ -35,13 +32,10 @@ var chaos = (function() {
 		 * Pops up a bitmap image representation of the canvas in a new window.
 		 */
 		popImage: function() {
-		    var win = window.open("", "Canvas Image"),
-		    	src = this.canvas.toDataURL("image/png");
+			var win = window.open("", "Canvas Image"),
+				src = this.canvas.toDataURL("image/png");
 
-		    win.document.write("<img src='" + src 
-		    	+ "' width='" + this.width 
-		    	+ "' height='" + this.height + "'/>");
+			win.document.write("<img src='" + src + "' width='" + this.width + "' height='" + this.height + "'/>");
 		}
 	};
-
 }());
