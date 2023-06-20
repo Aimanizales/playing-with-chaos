@@ -7,7 +7,7 @@ var chaos = (function() {
 		init: function() {
 			this.canvas = document.getElementById("canvas");
 			this.context = this.canvas.getContext("2d");
-			this.setSize(window.innerWidth, window.innerHeight);
+			this.setSize(1024, 768);
 		},
 
 		setSize: function(width, height) {
