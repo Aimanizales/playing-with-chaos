@@ -1,22 +1,18 @@
 window.onload = function() {
-
 	init();
 
 	function init() {
-
 		chaos.init();
-		
-		document.body.addEventListener("keyup", function(event) {
-			console.log(event.keyCode);
-			switch(event.keyCode) {
-				case 32: // space
+
+		document.body.addEventListener('keyup', (event) => {
+			console.log(event);
+			switch(event.key) {
+				case ' ': // space
 					draw();
 					break;
-
-				case 80: // p
+				case 'p':
 					chaos.popImage();
 					break;
-
 				default: 
 					break;
 			}
@@ -24,7 +20,7 @@ window.onload = function() {
 	}
 
 	function draw() {
-		var x = Math.random() * (chaos.width - 100),
+		const x = Math.random() * (chaos.width - 100),
 			y = Math.random() * (chaos.height - 100),
 			w = 20 + Math.random() * 100,
 			h = 20 + Math.random() * 100,
