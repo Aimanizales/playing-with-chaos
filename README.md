@@ -1,1 +1,2 @@
-# playing-with-chaos
+# Playing with Chaos
+
