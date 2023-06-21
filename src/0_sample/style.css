@@ -1,8 +1,0 @@
-html, body {
-    margin: 0;
-    background-color: beige;
-}
-canvas {
-    display: block;
-    border: thin solid;
-}
