@@ -1,38 +1,32 @@
 window.onload = function() {
-	var size,
-		maxDepth = 0;
-
 	init();
 
 	function init() {
-
 		chaos.init();
 
-		size = chaos.height * 0.5;
+		let size = chaos.height * 0.5;
+		let maxDepth = 0;
 
-		draw();
+		draw({ size, maxDepth });
 
-		document.body.addEventListener("keyup", function(event) {
-			console.log(event.keyCode);
-			switch(event.keyCode) {
-				case 32: // space
+		document.body.addEventListener('keyup', (event) => {
+			console.log(event.key);
+			switch(event.key) {
+				case ' ':
 					maxDepth += 1;
-					draw();
+					draw({ size, maxDepth });
 					break;
 
-				case 80: // p
+				case 'p':
 					chaos.popImage();
 					break;
-
 				default: 
 					break;
 			}
 		});
-
-
 	}
 
-	function draw() {
+	function draw({ size, maxDepth }) {
 		chaos.clear();
 		chaos.context.save();
 		chaos.context.translate(chaos.width * 0.5, chaos.height * 0.6);
@@ -42,8 +36,8 @@ window.onload = function() {
 	}
 
 	function drawTriangle(depth) {
-		var angle = -Math.PI / 2;
-		if(depth === 0) {
+		let angle = -Math.PI / 2;
+		if (depth === 0) {
 			chaos.context.beginPath();
 
 			// move to top point of triangle
@@ -83,8 +77,6 @@ window.onload = function() {
 			chaos.context.scale(0.5, 0.5);
 			drawTriangle(depth - 1);
 			chaos.context.restore();
-			
 		}
 	}
-
 }
