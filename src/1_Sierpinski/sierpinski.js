@@ -10,7 +10,6 @@ window.onload = function() {
 		draw({ size, maxDepth });
 
 		document.body.addEventListener('keyup', (event) => {
-			console.log(event.key);
 			switch(event.key) {
 				case ' ':
 					maxDepth += 1;
@@ -27,6 +26,7 @@ window.onload = function() {
 	}
 
 	function draw({ size, maxDepth }) {
+		console.log({ size, maxDepth });
 		chaos.clear();
 		chaos.context.save();
 		chaos.context.translate(chaos.width * 0.5, chaos.height * 0.6);
@@ -37,12 +37,14 @@ window.onload = function() {
 
 	function drawTriangle(depth) {
 		let angle = -Math.PI / 2;
+		console.log({ angle, depth });
 		if (depth === 0) {
 			chaos.context.beginPath();
 
 			// move to top point of triangle
 			chaos.context.moveTo(Math.cos(angle), Math.sin(angle));
 			angle += Math.PI * 2 / 3;
+			console.log({ angle, cos: Math.cos(angle), sin: Math.sin(angle) });
 
 			// draw line to lower right point
 			chaos.context.lineTo(Math.cos(angle), Math.sin(angle));
@@ -50,6 +52,7 @@ window.onload = function() {
 			// draw line to final point
 			angle += Math.PI * 2 / 3;
 			chaos.context.lineTo(Math.cos(angle), Math.sin(angle));
+			console.log({ angle, cos: Math.cos(angle), sin: Math.sin(angle) });
 
 			// fill will close the shape
 			chaos.context.fill();
