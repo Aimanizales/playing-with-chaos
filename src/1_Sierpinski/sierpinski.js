@@ -1,3 +1,14 @@
+const radians_to_degrees = radians => radians * (180 / Math.PI);
+
+const printValues = (prefix = '', { angle, cosAngle, sinAngle }) => console.log(prefix, {
+	//angle,
+	angleInDegrees: radians_to_degrees(angle),
+	//cos: cosAngle,
+	cosAngleInDegrees: radians_to_degrees(cosAngle),
+	//sin: sinAngle,
+	sinAngleInDegrees: radians_to_degrees(sinAngle),
+});
+
 window.onload = function() {
 	init();
 
@@ -30,29 +41,40 @@ window.onload = function() {
 		chaos.clear();
 		chaos.context.save();
 		chaos.context.translate(chaos.width * 0.5, chaos.height * 0.6);
-		chaos.context.scale(size, size);
+		chaos.context.scale(400, 400);
 		drawTriangle(maxDepth);
 		chaos.context.restore();		
 	}
 
 	function drawTriangle(depth) {
 		let angle = -Math.PI / 2;
-		console.log({ angle, depth });
+		let cosAngle = Math.cos(angle);
+		let sinAngle = Math.sin(angle);
+
 		if (depth === 0) {
 			chaos.context.beginPath();
 
 			// move to top point of triangle
-			chaos.context.moveTo(Math.cos(angle), Math.sin(angle));
+			chaos.context.moveTo(cosAngle, sinAngle);
+
+			printValues('0', { angle, cosAngle, sinAngle });
+
 			angle += Math.PI * 2 / 3;
-			console.log({ angle, cos: Math.cos(angle), sin: Math.sin(angle) });
+			cosAngle = Math.cos(angle);
+			sinAngle = Math.sin(angle);
+
+			printValues('1', { angle, cosAngle, sinAngle });
 
 			// draw line to lower right point
-			chaos.context.lineTo(Math.cos(angle), Math.sin(angle));
+			chaos.context.lineTo(cosAngle, sinAngle);
 
 			// draw line to final point
 			angle += Math.PI * 2 / 3;
-			chaos.context.lineTo(Math.cos(angle), Math.sin(angle));
-			console.log({ angle, cos: Math.cos(angle), sin: Math.sin(angle) });
+			cosAngle = Math.cos(angle);
+			sinAngle = Math.sin(angle);
+			chaos.context.lineTo(cosAngle, sinAngle);
+
+			printValues('2', { angle, cosAngle, sinAngle });
 
 			// fill will close the shape
 			chaos.context.fill();
