@@ -1,4 +1,4 @@
-var chaos = (function() {
+const chaos = (function() {
 	return {
 		/**
 		 * 1. Initializes chaos by finding the canvas element.
