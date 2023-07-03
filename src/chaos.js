@@ -1,3 +1,5 @@
+// https://circleci.com/blog/ci-cd-for-js-iifes/
+
 const chaos = (function() {
 	return {
 		/**
@@ -17,8 +19,8 @@ const chaos = (function() {
 		},
 
 		/**
-		 * Clears the canvas by filling it with the color specified, or erasing all
-		 * pixels if no color is specified.
+		 * Clears the canvas by filling it with the color specified, 
+		 * or erasing all pixels if no color is specified.
 		 */
 		clear: function(color) {
 			if (color) {
