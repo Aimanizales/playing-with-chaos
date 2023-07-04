@@ -45,7 +45,9 @@ function draw({ size, maxDepth }) {
 }
 
 function drawTriangle(depth) {
-	let angle = -Math.PI / 2;  // -90º
+	let angle = -Math.PI / 2;  // -90º 
+	// y-axis in the canvas coordinate system is inverse.
+	// negative numbers are above.  
 	let xPos = Math.cos(angle);
 	let yPos = Math.sin(angle);
 
@@ -54,8 +56,6 @@ function drawTriangle(depth) {
 
 		// move to top point of triangle
 		chaos.context.moveTo(xPos, yPos);
-
-		printValues('0', { angle, xPos, yPos });
 
 		angle += Math.PI * 2 / 3;
 		xPos = Math.cos(angle);	
