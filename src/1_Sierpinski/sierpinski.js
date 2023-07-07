@@ -1,27 +1,28 @@
 const radians_to_degrees = radians => radians * (180 / Math.PI);
 
-const printValues = (prefix = '', { angle, xPos, yPos }) => console.log(prefix, {
-	angle,
-	angleInDegrees: radians_to_degrees(angle),
-	xPos,
-	yPos,
-});
+const printValues = (prefix = '', { angle, xPos, yPos }) => console.log(
+	prefix, {
+		angle,
+		angleInDegrees: radians_to_degrees(angle),
+		xPos,
+		yPos,
+	});
+
+const MAX_DEPTH = 9;
 
 function init() {
-	console.log('chaos', chaos);
 	chaos.init();
 
-	let size = chaos.height * 0.5;
-	let maxDepth = 0;
+	let depth = 0;
 
-	draw({ size, maxDepth });
+	draw({ depth });
 
-	document.body.addEventListener('keyup', (event) => {
+	document.body.addEventListener('keyup', event => {
 		switch(event.key) {
 			case ' ':
-				maxDepth += 1;
-				if (maxDepth < 9) {
-					draw({ size, maxDepth });
+				depth += 1;
+				if (depth < MAX_DEPTH) {
+					draw({ depth });
 				}
 				break;
 
@@ -34,20 +35,22 @@ function init() {
 	});
 }
 
-function draw({ size, maxDepth }) {
-	// console.log({ size, maxDepth });
+function draw({ depth }) {
 	chaos.clear();
 	chaos.context.save();
 	chaos.context.translate(chaos.width * 0.5, chaos.height * 0.6);
-	chaos.context.scale(400, 400); // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale
-	drawTriangle(maxDepth);
-	chaos.context.restore();		
+	
+	// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale
+	chaos.context.scale(400, 400); 
+	
+	drawTriangle(depth);
+	chaos.context.restore();
 }
 
 function drawTriangle(depth) {
-	let angle = -Math.PI / 2;  // -90º 
-	// y-axis in the canvas coordinate system is inverse.
-	// negative numbers are above.  
+	let angle = -Math.PI / 2;  // -90º
+
+	// Canvas y-axis is inverse (negatives are up).
 	let xPos = Math.cos(angle);
 	let yPos = Math.sin(angle);
 
@@ -61,8 +64,6 @@ function drawTriangle(depth) {
 		xPos = Math.cos(angle);	
 		yPos = Math.sin(angle);
 
-		printValues('1', { angle, xPos, yPos });
-
 		// draw line to lower right point
 		chaos.context.lineTo(xPos, yPos);
 
@@ -72,33 +73,51 @@ function drawTriangle(depth) {
 		yPos = Math.sin(angle);
 		chaos.context.lineTo(xPos, yPos);
 
-		printValues('2', { angle, xPos, yPos });
-
 		// fill will close the shape
 		chaos.context.fill();
 	}
 	else {
 		// draw the top triangle
+		
+		// Saves the entire state of the canvas by 
+		// pushing the current state onto a stack.
 		chaos.context.save();
-		chaos.context.translate(Math.cos(angle) * 0.5, Math.sin(angle) * 0.5);
+
+		xPos = Math.cos(angle) * 0.5;
+		yPos = Math.sin(angle) * 0.5;
+
+		chaos.context.translate(xPos, yPos);
 		chaos.context.scale(0.5, 0.5);
 		drawTriangle(depth - 1);
-		chaos.context.restore();
-		
+
+		// Restores the most recently saved canvas state by 
+		// popping the top entry in the drawing state stack.
+		// If there is no saved state, this method does nothing.
+		chaos.context.restore(); 
+		chaos.context.save();
+
 		// draw the lower right triangle
 		angle += Math.PI * 2 / 3;
-		chaos.context.save();
-		chaos.context.translate(Math.cos(angle) * 0.5, Math.sin(angle) * 0.5);
+		xPos = Math.cos(angle) * 0.5;
+		yPos = Math.sin(angle) * 0.5;
+
+		chaos.context.translate(xPos, yPos);
 		chaos.context.scale(0.5, 0.5);
+
 		drawTriangle(depth - 1);
+
 		chaos.context.restore();
+		chaos.context.save();
 		
 		// draw the lower left triangle
 		angle += Math.PI * 2 / 3;
-		chaos.context.save();
-		chaos.context.translate(Math.cos(angle) * 0.5, Math.sin(angle) * 0.5);
+		xPos = Math.cos(angle) * 0.5;
+		yPos = Math.sin(angle) * 0.5;
+		chaos.context.translate(xPos, yPos);
 		chaos.context.scale(0.5, 0.5);
+
 		drawTriangle(depth - 1);
+
 		chaos.context.restore();
 	}
 }
