@@ -8,6 +8,7 @@ const printValues = (prefix = '', { angle, xPos, yPos }) => console.log(
 		yPos,
 	});
 
+const CANVAS_SCALE = 300;
 const MAX_DEPTH = 9;
 let context2D;
 
@@ -68,57 +69,48 @@ function draw({ depth }) {
 	context2D.translate(chaos.width * 0.5, chaos.height * 0.6);
 	
 	// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale
-	context2D.scale(400, 400); 
+	context2D.scale(CANVAS_SCALE, CANVAS_SCALE); 
 	
 	drawTriangle(depth);
-
 	drawAxis();
 
 	context2D.restore();
 }
 
+const getPosition = angle => ([
+	Math.cos(angle),
+	Math.sin(angle)
+]);
+
 function drawTriangle(depth) {
 	// debugger;
-	let angle = -Math.PI / 2;  // -90º
-
 	// Canvas y-axis is inverse (negatives are up).
-	let xPos = Math.cos(angle);
-	let yPos = Math.sin(angle);
+	let radian = -Math.PI / 2;  // -90º
 
 	if (depth === 0) {
 		context2D.beginPath();
 
 		// move to top point of triangle
-		context2D.moveTo(xPos, yPos);
+		context2D.moveTo(...getPosition(radian));
 
-		angle += Math.PI * 2 / 3;
-		xPos = Math.cos(angle);	
-		yPos = Math.sin(angle);
-
-		// draw line to lower right point
-		context2D.lineTo(xPos, yPos);
+		radian += Math.PI * 2 / 3;
+		context2D.lineTo(...getPosition(radian));
 
 		// draw line to final point
-		angle += Math.PI * 2 / 3;
-		xPos = Math.cos(angle);
-		yPos = Math.sin(angle);
-		context2D.lineTo(xPos, yPos);
+		radian += Math.PI * 2 / 3;
+		context2D.lineTo(...getPosition(radian));
 
-		// fill will close the shape
 		context2D.fill();
 	}
 	else {
-		// draw the top triangle
-		
 		// Saves the entire state of the canvas by 
 		// pushing the current state onto a stack.
 		context2D.save();
-
-		xPos = Math.cos(angle) * 0.5;
-		yPos = Math.sin(angle) * 0.5;
-
-		context2D.translate(xPos, yPos);
+		
+		// draw the top triangle
+		context2D.translate(...getPosition(radian).map(n => n * 0.5));
 		context2D.scale(0.5, 0.5);
+
 		drawTriangle(depth - 1);
 
 		// Restores the most recently saved canvas state by 
@@ -128,11 +120,8 @@ function drawTriangle(depth) {
 		context2D.save();
 
 		// draw the lower right triangle
-		angle += Math.PI * 2 / 3;
-		xPos = Math.cos(angle) * 0.5;
-		yPos = Math.sin(angle) * 0.5;
-
-		context2D.translate(xPos, yPos);
+		radian += Math.PI * 2 / 3;
+		context2D.translate(...getPosition(radian).map(n => n * 0.5));
 		context2D.scale(0.5, 0.5);
 
 		drawTriangle(depth - 1);
@@ -141,10 +130,8 @@ function drawTriangle(depth) {
 		context2D.save();
 		
 		// draw the lower left triangle
-		angle += Math.PI * 2 / 3;
-		xPos = Math.cos(angle) * 0.5;
-		yPos = Math.sin(angle) * 0.5;
-		context2D.translate(xPos, yPos);
+		radian += Math.PI * 2 / 3;
+		context2D.translate(...getPosition(radian).map(n => n * 0.5));
 		context2D.scale(0.5, 0.5);
 
 		drawTriangle(depth - 1);
@@ -153,4 +140,4 @@ function drawTriangle(depth) {
 	}
 }
 
-window.onload = () => console.log(chaos.context) || init();
+window.onload = () => init();
