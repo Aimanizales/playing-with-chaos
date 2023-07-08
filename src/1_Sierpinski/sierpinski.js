@@ -84,19 +84,15 @@ const getPosition = angle => ([
 
 function drawTriangle(depth) {
 	// debugger;
-	// Canvas y-axis is inverse (negatives are up).
 	let radian = -Math.PI / 2;  // -90º
 
 	if (depth === 0) {
 		context2D.beginPath();
-
-		// move to top point of triangle
 		context2D.moveTo(...getPosition(radian));
 
 		radian += Math.PI * 2 / 3;
 		context2D.lineTo(...getPosition(radian));
 
-		// draw line to final point
 		radian += Math.PI * 2 / 3;
 		context2D.lineTo(...getPosition(radian));
 
@@ -123,12 +119,10 @@ function drawTriangle(depth) {
 		radian += Math.PI * 2 / 3;
 		context2D.translate(...getPosition(radian).map(n => n / 2));
 		context2D.scale(0.5, 0.5);
-
 		drawTriangle(depth - 1);
-
 		context2D.restore();
-		context2D.save();
 		
+		context2D.save();
 		// draw the lower left triangle
 		radian += Math.PI * 2 / 3;
 		context2D.translate(...getPosition(radian).map(n => n / 2));
