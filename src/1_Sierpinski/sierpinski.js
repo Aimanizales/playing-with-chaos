@@ -66,7 +66,7 @@ function draw({ depth }) {
 	context2D = chaos.context;
 
 	context2D.save();
-	context2D.translate(chaos.width * 0.5, chaos.height * 0.6);
+	context2D.translate(chaos.width * 0.5, chaos.height * 0.5);
 	
 	// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale
 	context2D.scale(CANVAS_SCALE, CANVAS_SCALE); 
@@ -101,23 +101,26 @@ function drawTriangle(depth) {
 	}
 	else {
 		context2D.save();
-		context2D.translate(...getPosition(radian, 0.5));
-		context2D.scale(0.5, 0.5);
-		drawTriangle(depth - 1);
-		context2D.restore();
 
-		context2D.save();
-		radian += RADIAN_INCREMENT;
 		context2D.translate(...getPosition(radian, 0.5));
 		context2D.scale(0.5, 0.5);
+
 		drawTriangle(depth - 1);
 		context2D.restore();
-		
 		context2D.save();
+
 		radian += RADIAN_INCREMENT;
 		context2D.translate(...getPosition(radian, 0.5));
 		context2D.scale(0.5, 0.5);
 
+		drawTriangle(depth - 1);
+
+		context2D.restore();
+		context2D.save();
+
+		radian += RADIAN_INCREMENT;
+		context2D.translate(...getPosition(radian, 0.5));
+		context2D.scale(0.5, 0.5);
 		drawTriangle(depth - 1);
 
 		context2D.restore();
