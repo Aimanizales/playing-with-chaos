@@ -10,6 +10,7 @@ const printValues = (prefix = '', { angle, xPos, yPos }) => console.log(
 
 const CANVAS_SCALE = 300;
 const MAX_DEPTH = 9;
+const RADIAN_INCREMENT = Math.PI * 2 / 3; // 120º
 let context2D;
 
 function drawAxis() {
@@ -66,10 +67,8 @@ function draw({ depth }) {
 	context2D = chaos.context;
 
 	context2D.save();
-	context2D.translate(chaos.width * 0.5, chaos.height * 0.5);
-	
-	// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/scale
-	context2D.scale(CANVAS_SCALE, CANVAS_SCALE); 
+	context2D.translate(chaos.width * 0.5, chaos.height * 0.5);	
+	context2D.scale(CANVAS_SCALE, CANVAS_SCALE);
 	
 	drawTriangle(depth);
 	drawAxis();
@@ -82,10 +81,16 @@ const getPosition = (angle, scale = 1) => ([
 	Math.sin(angle)
 ].map(pos => pos * scale));
 
+const relocateAndRedraw = (r, d) => {
+	context2D.translate(...getPosition(r, 0.5));
+	context2D.scale(0.5, 0.5);
+	drawTriangle(d - 1);
+	context2D.restore();
+}
+
 function drawTriangle(depth) {
 	// debugger;
 	let radian = -Math.PI / 2; // -90º
-	const RADIAN_INCREMENT = Math.PI * 2 / 3; // 120º
 
 	if (depth === 0) {
 		context2D.beginPath();
@@ -102,28 +107,15 @@ function drawTriangle(depth) {
 	else {
 		context2D.save();
 
-		context2D.translate(...getPosition(radian, 0.5));
-		context2D.scale(0.5, 0.5);
-
-		drawTriangle(depth - 1);
-		context2D.restore();
+		relocateAndRedraw(radian, depth)
 		context2D.save();
 
 		radian += RADIAN_INCREMENT;
-		context2D.translate(...getPosition(radian, 0.5));
-		context2D.scale(0.5, 0.5);
-
-		drawTriangle(depth - 1);
-
-		context2D.restore();
+		relocateAndRedraw(radian, depth)
 		context2D.save();
 
 		radian += RADIAN_INCREMENT;
-		context2D.translate(...getPosition(radian, 0.5));
-		context2D.scale(0.5, 0.5);
-		drawTriangle(depth - 1);
-
-		context2D.restore();
+		relocateAndRedraw(radian, depth)
 	}
 }
 
