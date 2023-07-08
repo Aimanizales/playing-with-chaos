@@ -77,55 +77,45 @@ function draw({ depth }) {
 	context2D.restore();
 }
 
-const getPosition = angle => ([
+const getPosition = (angle, scale = 1) => ([
 	Math.cos(angle),
 	Math.sin(angle)
-]);
+].map(pos => pos * scale));
 
 function drawTriangle(depth) {
 	// debugger;
-	let radian = -Math.PI / 2;  // -90º
+	let radian = -Math.PI / 2; // -90º
+	const RADIAN_INCREMENT = Math.PI * 2 / 3; // 120º
 
 	if (depth === 0) {
 		context2D.beginPath();
 		context2D.moveTo(...getPosition(radian));
 
-		radian += Math.PI * 2 / 3;
+		radian += RADIAN_INCREMENT;
 		context2D.lineTo(...getPosition(radian));
 
-		radian += Math.PI * 2 / 3;
+		radian += RADIAN_INCREMENT;
 		context2D.lineTo(...getPosition(radian));
 
 		context2D.fill();
 	}
 	else {
-		// Saves the entire state of the canvas by 
-		// pushing the current state onto a stack.
 		context2D.save();
-		
-		// draw the top triangle
-		context2D.translate(...getPosition(radian).map(n => n / 2));
+		context2D.translate(...getPosition(radian, 0.5));
 		context2D.scale(0.5, 0.5);
-
 		drawTriangle(depth - 1);
+		context2D.restore();
 
-		// Restores the most recently saved canvas state by 
-		// popping the top entry in the drawing state stack.
-		// If there is no saved state, this method does nothing.
-		context2D.restore(); 
 		context2D.save();
-
-		// draw the lower right triangle
-		radian += Math.PI * 2 / 3;
-		context2D.translate(...getPosition(radian).map(n => n / 2));
+		radian += RADIAN_INCREMENT;
+		context2D.translate(...getPosition(radian, 0.5));
 		context2D.scale(0.5, 0.5);
 		drawTriangle(depth - 1);
 		context2D.restore();
 		
 		context2D.save();
-		// draw the lower left triangle
-		radian += Math.PI * 2 / 3;
-		context2D.translate(...getPosition(radian).map(n => n / 2));
+		radian += RADIAN_INCREMENT;
+		context2D.translate(...getPosition(radian, 0.5));
 		context2D.scale(0.5, 0.5);
 
 		drawTriangle(depth - 1);
