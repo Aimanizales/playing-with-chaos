@@ -108,7 +108,7 @@ function drawTriangle(depth) {
 		context2D.save();
 		
 		// draw the top triangle
-		context2D.translate(...getPosition(radian).map(n => n * 0.5));
+		context2D.translate(...getPosition(radian).map(n => n / 2));
 		context2D.scale(0.5, 0.5);
 
 		drawTriangle(depth - 1);
@@ -121,7 +121,7 @@ function drawTriangle(depth) {
 
 		// draw the lower right triangle
 		radian += Math.PI * 2 / 3;
-		context2D.translate(...getPosition(radian).map(n => n * 0.5));
+		context2D.translate(...getPosition(radian).map(n => n / 2));
 		context2D.scale(0.5, 0.5);
 
 		drawTriangle(depth - 1);
@@ -131,7 +131,7 @@ function drawTriangle(depth) {
 		
 		// draw the lower left triangle
 		radian += Math.PI * 2 / 3;
-		context2D.translate(...getPosition(radian).map(n => n * 0.5));
+		context2D.translate(...getPosition(radian).map(n => n / 2));
 		context2D.scale(0.5, 0.5);
 
 		drawTriangle(depth - 1);
