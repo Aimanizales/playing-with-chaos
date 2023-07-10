@@ -1,13 +1,19 @@
 html, body {
     margin: 0 auto;
     padding: 0;
-    background-color: beige;
+    background-color: #ddd;
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
 header, main {
     margin: 0 auto;
     text-align: center;
+}
+
+header {
+    border: thin solid;
+    padding-bottom: 20px;
+    background-color: #ccc;
 }
 
 canvas {

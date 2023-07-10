@@ -51,7 +51,7 @@ const getPosition = (angle, scalar = 1) => ([
 ].map(pos => pos * scalar));
 
 const relocateAndRedraw = (r, d) => {
-	console.log('Relocating and redrawing...', { r: `${radians_to_degrees(r)}º`, d: d - 1 })
+	console.log('   Relocating and redrawing...', { r: `${radians_to_degrees(r)}º`, d: d })
 	context2D.save();
 	context2D.translate(...getPosition(r, 0.5));
 	context2D.scale(0.5, 0.5);
@@ -78,13 +78,13 @@ function drawTriangle(depth) {
 		context2D.fill();
 	}
 	else {
-		relocateAndRedraw(radian, depth)
+		relocateAndRedraw(radian, depth);
 
 		radian += RADIAN_INCREMENT; // 30º
-		relocateAndRedraw(radian, depth)
+		relocateAndRedraw(radian, depth);
 
 		radian += RADIAN_INCREMENT; // 150º
-		relocateAndRedraw(radian, depth)
+		relocateAndRedraw(radian, depth);
 	}
 }
 
