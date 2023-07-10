@@ -1,40 +1,9 @@
-const radians_to_degrees = radians => radians * (180 / Math.PI);
-
-const printValues = (prefix = '', { angle, xPos, yPos }) => console.log(
-	prefix, {
-		angle,
-		angleInDegrees: radians_to_degrees(angle),
-		xPos,
-		yPos,
-	});
-
+const RADIAN_INITIAL = -Math.PI * 0.5; // -90º
+const RADIAN_INCREMENT = Math.PI * 2 / 3; // 120º
 const CANVAS_SCALE = 300;
 const MAX_DEPTH = 9;
-const RADIAN_INCREMENT = Math.PI * 2 / 3; // 120º
+
 let context2D;
-
-function drawAxis() {
-	// x-axis
-	context2D.beginPath();
-	context2D.lineWidth = 0.005;
-	context2D.strokeStyle = "green";
-	context2D.moveTo(-1, 0);
-	context2D.lineTo(1, 0);
-	context2D.stroke();
-
-	// y-axis
-	context2D.beginPath();
-	context2D.lineWidth = 0.005;
-	context2D.strokeStyle = "green";
-	context2D.moveTo(0, -1);
-	context2D.lineTo(0, 1);
-	context2D.stroke();
-
-	// circle:
-	context2D.beginPath();
-	context2D.ellipse(0, 0, 1, 1, 0, 0, 2 * Math.PI);
-	context2D.stroke();
-}
 
 function init() {
 	chaos.init();
@@ -76,12 +45,14 @@ function draw({ depth }) {
 	context2D.restore();
 }
 
-const getPosition = (angle, scale = 1) => ([
+const getPosition = (angle, scalar = 1) => ([
 	Math.cos(angle),
 	Math.sin(angle)
-].map(pos => pos * scale));
+].map(pos => pos * scalar));
 
 const relocateAndRedraw = (r, d) => {
+	console.log('Relocating and redrawing...', { r: `${radians_to_degrees(r)}º`, d: d - 1 })
+	context2D.save();
 	context2D.translate(...getPosition(r, 0.5));
 	context2D.scale(0.5, 0.5);
 	drawTriangle(d - 1);
@@ -90,31 +61,29 @@ const relocateAndRedraw = (r, d) => {
 
 function drawTriangle(depth) {
 	// debugger;
-	let radian = -Math.PI / 2; // -90º
+	let radian = RADIAN_INITIAL; // -90º
 
 	if (depth === 0) {
+		console.log('Drawing...', { r: `${radians_to_degrees(radian)}º`, depth })
+
 		context2D.beginPath();
 		context2D.moveTo(...getPosition(radian));
 
-		radian += RADIAN_INCREMENT;
+		radian += RADIAN_INCREMENT; // 30º
 		context2D.lineTo(...getPosition(radian));
 
-		radian += RADIAN_INCREMENT;
+		radian += RADIAN_INCREMENT; // 150º
 		context2D.lineTo(...getPosition(radian));
 
 		context2D.fill();
 	}
 	else {
-		context2D.save();
-
 		relocateAndRedraw(radian, depth)
-		context2D.save();
 
-		radian += RADIAN_INCREMENT;
+		radian += RADIAN_INCREMENT; // 30º
 		relocateAndRedraw(radian, depth)
-		context2D.save();
 
-		radian += RADIAN_INCREMENT;
+		radian += RADIAN_INCREMENT; // 150º
 		relocateAndRedraw(radian, depth)
 	}
 }
