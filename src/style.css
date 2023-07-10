@@ -2,18 +2,30 @@ html, body {
     margin: 0 auto;
     padding: 0;
     background-color: #ddd;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-family:'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+
+h1 {
+    margin: 0;
 }
 
 header, main {
     margin: 0 auto;
     text-align: center;
+    max-width: 1024px;
 }
 
 header {
-    border: thin solid;
-    padding-bottom: 20px;
+    padding: 20px;
     background-color: #ccc;
+}
+
+nav li {
+    list-style-type: none;
+}
+
+ol, ul, nav {
+    text-align: left;
 }
 
 canvas {
