@@ -1,24 +1,24 @@
 window.onload = function() {
-
-	var triangles = [],
-		offset = 100;
+	let triangles = [],
+		offset = 100,
+		context2D;
 
 	init();
 
 	function init() {
-		var i,
-			angle = - Math.PI / 2;
+		let i,
+			angle = -Math.PI / 2;
 
 		chaos.init();
-		document.body.addEventListener("keyup", function(event) {
-			console.log(event.keyCode);
-			switch(event.keyCode) {
-				case 32: // space
+
+		document.body.addEventListener("keyup", event => {
+			switch(event.key) {
+				case ' ':
 					subdivide();
 					draw();
 					break;
 
-				case 80: // p
+				case 'p':
 					chaos.popImage();
 					break;
 
@@ -29,7 +29,7 @@ window.onload = function() {
 
 		triangles[0] = [];
 
-		for(i = 0; i < 3; i += 1) {
+		for (i = 0; i < 3; i += 1) {
 			triangles[0].push({
 				x: chaos.width * .5 + Math.cos(angle) * chaos.height * .5,
 				y: chaos.height * .65 + Math.sin(angle) * chaos.height * .5
@@ -41,30 +41,34 @@ window.onload = function() {
 	}
 
 	function draw() {
-		var i;
+		let i;
+		
+		context2D = chaos.context;
 
 		chaos.clear();
-		chaos.context.fillStyle = "rgba(255, 0, 0, 0.5)";
-		chaos.context.strokeStyle = "black";
-		chaos.context.lineWidth = 0.5;
-		chaos.context.beginPath();
+
+		context2D.fillStyle = 'rgba(255, 0, 0, 0.5)';
+		context2D.strokeStyle = 'black';
+		context2D.lineWidth = 0.5;
+		context2D.beginPath();
+
 		for(i = 0; i < triangles.length; i += 1) {
 			drawTriangle(triangles[i]);
 		}
-		// chaos.context.fill();
-		chaos.context.stroke();
+
+		// context2D.fill();
+		context2D.stroke();
 	}
 
 	function drawTriangle(triangle) {
-		chaos.context.moveTo(triangle[0].x, triangle[0].y);
-		chaos.context.lineTo(triangle[1].x, triangle[1].y);
-		chaos.context.lineTo(triangle[2].x, triangle[2].y);
-		chaos.context.lineTo(triangle[0].x, triangle[0].y);
-
+		context2D.moveTo(triangle[0].x, triangle[0].y);
+		context2D.lineTo(triangle[1].x, triangle[1].y);
+		context2D.lineTo(triangle[2].x, triangle[2].y);
+		context2D.lineTo(triangle[0].x, triangle[0].y);
 	}
 
 	function subdivide() {
-		var i,
+		let i,
 			triangle,
 			p0, p1, p2, p3, p4, p5;
 
@@ -93,7 +97,7 @@ window.onload = function() {
 			triangles.splice(i, 1);
 		}
 		offset *= 0.5;
-		console.log(offset);
+		// console.log(offset);
 	}
 
 }
