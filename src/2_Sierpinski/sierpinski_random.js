@@ -70,7 +70,8 @@ window.onload = function() {
     function subdivide() {
         let i,
             triangle,
-            p0, p1, p2, p3, p4, p5;
+            p0, p1, p2, p3, p4, p5,
+            xxx = offset * 2 - offset; // rename
 
         for(i = triangles.length - 1; i >= 0; i -= 1) {
             triangle = triangles[i];
@@ -79,16 +80,16 @@ window.onload = function() {
             p1 = triangle[1];
             p2 = triangle[2];
             p3 = {
-                x: (p0.x + p1.x) / 2 + Math.random() * offset * 2 - offset,
-                y: (p0.y + p1.y) / 2 + Math.random() * offset * 2 - offset
+                x: (p0.x + p1.x) / 2 + Math.random() * xxx,
+                y: (p0.y + p1.y) / 2 + Math.random() * xxx
             };
             p4 = {
-                x: (p1.x + p2.x) / 2 + Math.random() * offset * 2 - offset,
-                y: (p1.y + p2.y) / 2 + Math.random() * offset * 2 - offset
+                x: (p1.x + p2.x) / 2 + Math.random() * xxx,
+                y: (p1.y + p2.y) / 2 + Math.random() * xxx
             };
             p5 = {
-                x: (p2.x + p0.x) / 2 + Math.random() * offset * 2 - offset,
-                y: (p2.y + p0.y) / 2 + Math.random() * offset * 2 - offset
+                x: (p2.x + p0.x) / 2 + Math.random() * xxx,
+                y: (p2.y + p0.y) / 2 + Math.random() * xxx
             };
             triangles.push([p0, p3, p5]);
             triangles.push([p3, p1, p4]);
@@ -97,6 +98,5 @@ window.onload = function() {
             triangles.splice(i, 1);
         }
         offset *= 0.5;
-        // console.log(offset);
     }
 }
