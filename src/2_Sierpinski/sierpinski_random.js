@@ -7,7 +7,7 @@ window.onload = function() {
 
     function init() {
         let i,
-            angle = -Math.PI / 2;
+            angle = -Math.PI * 0.5;
 
         chaos.init();
 
@@ -36,6 +36,7 @@ window.onload = function() {
             });
             angle += Math.PI * 2 / 3;
         }
+        console.log(triangles)
 
         draw();
     }
@@ -55,6 +56,8 @@ window.onload = function() {
         for(i = 0; i < triangles.length; i += 1) {
             drawTriangle(triangles[i]);
         }
+        console.log(triangles)
+
 
         // context2D.fill();
         context2D.stroke();
