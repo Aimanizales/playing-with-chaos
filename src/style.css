@@ -2,35 +2,75 @@ html, body {
     margin: 0 auto;
     padding: 0;
     background-color: #ddd;
-    font-family:'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
-}
-
-h1 {
-    margin: 0;
-}
-
-header, main {
-    margin: 0 auto;
-    text-align: center;
-    max-width: 1024px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-weight: 400;
 }
 
 header {
-    padding: 20px;
-    background-color: #ccc;
+    padding: 16px;
+    background-color: #333;
+}
+
+header h1 {
+    font-size: 1.5rem;
+    text-align: left;
+    color: #eee;
+}
+
+aside {
+    background-color: #999;
+    color: white;
+    width: 200px;
 }
 
 nav li {
     list-style-type: none;
+    font-weight: 300;
+    font-size: 12px;
+    font-weight: 500;
 }
 
-ol, ul, nav {
-    text-align: left;
+nav li span {
+    padding: 8px 16px;
+    background-color: #333;
+    display: inline-block;
+    width: -webkit-fill-available;
+}
+
+nav li a {
+    color: white;
+    padding: 8px 16px;
+    display: inline-block;
+    text-decoration: none;
+    width: -webkit-fill-available;
+}
+
+nav li a:hover {
+    color: #ccc;
+    background-color: #333;
+    text-decoration:underline;
+}
+
+ nav ul ul {
+    margin-left: 16px;
+ }
+
+main {
+    padding: 8px;
+}
+
+main h2 {
+    font-size: 24px;
+    margin-bottom: 16px;
 }
 
 canvas {
     display: block;
     margin: 0 auto;
-    border: thin solid #333;
     background-color: white;
+    margin: 8px 0;
+}
+
+.container {
+    display: flex;
 }

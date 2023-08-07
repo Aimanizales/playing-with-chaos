@@ -2,19 +2,44 @@
 <html>
 <head>
 	<title>1 - Sample Project</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
     <header>
-        <h1>1 - Initial Sample</h1>
-        <nav>
-            <a href="../index.html">Back to index</a>
-        </nav>
+        <h1>Playing with Chaos</h1>
     </header>
-    <main>
-        <p>[Press Space to iterate – Press P to generate image]</p>
-        <canvas id="canvas" />
-    </main>
+    <div class="container">
+        <aside>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="../index.html">Index</a>
+                    </li>
+                    <li>
+                        <a href="../0_SourceCode/">0 SourceCode</a>
+                    </li>
+                    <li>
+                        <span>1 Sample</span>
+                    </li>
+                    <li>
+                        <a href="../2_Sierpinski/">2.1 The Sierpinksi Triangle</a>
+                    </li>
+                    <li>
+                        <a href="../2_Koch/">2.2 The Koch Curve</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <h2>1. Initial Sample</h2>
+            <p>[Press Space to iterate – Press P to generate image]</p>
+            <canvas id="canvas" />
+        </main>
+    </div>
     <script type="text/javascript" src="../chaos.js"></script>
 	<script type="text/javascript" src="sample.js"></script>
 </body>
