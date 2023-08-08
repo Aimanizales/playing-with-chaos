@@ -1,23 +1,23 @@
 window.onload = function() {
-	var maxDepth = 0;
+	let maxDepth = 0;
+
+	const { sqrt, sin, cos, atan2, PI } = Math;
 
 	init();
 
 	function init() {
-
 		chaos.init();
 
 		draw();
 
-		document.body.addEventListener("keyup", function(event) {
-			console.log(event.keyCode);
-			switch(event.keyCode) {
-				case 32: // space
+		document.body.addEventListener('keyup', event => {
+			switch(event.key) {
+				case ' ':
 					maxDepth += 1;
 					draw();
 					break;
 
-				case 80: // p
+				case 'p':
 					chaos.popImage();
 					break;
 
@@ -25,17 +25,15 @@ window.onload = function() {
 					break;
 			}
 		});
-
-
 	}
 
 	function draw() {
-		var p0 = {
+		let p0 = {
 			x: chaos.width * 0.1,
 			y: chaos.height * 0.75
 		}
 
-		var p1 = {
+		let p1 = {
 			x: chaos.width * 0.9,
 			y: chaos.height * 0.75
 		}
@@ -45,30 +43,30 @@ window.onload = function() {
 
 		koch(p0, p1, maxDepth);
 	}
-
+	
 	function koch(p0, p1, depth) {
-		var dx = p1.x - p0.x,
+		let dx = p1.x - p0.x,
 			dy = p1.y - p0.y,
 			// the length of the main segment:
-			dist = Math.sqrt(dx * dx + dy * dy),
+			dist = sqrt(dx * dx + dy * dy),
 			// the length of each sub-segment:
 			unit = dist / 3,
 			// the angle of the main segment:
-			angle = Math.atan2(dy, dx),
+			angle = atan2(dy, dx),
 			pa, pb, pc;
 
 		// calculate the three intermediate points:
 		pa = {
-			x: p0.x + Math.cos(angle) * unit,
-			y: p0.y + Math.sin(angle) * unit
+			x: p0.x + cos(angle) * unit,
+			y: p0.y + sin(angle) * unit
 		};
 		pb = {
-			x: pa.x + Math.cos(angle - Math.PI / 3) * unit,
-			y: pa.y + Math.sin(angle - Math.PI / 3) * unit
+			x: pa.x + cos(angle - PI / 3) * unit,
+			y: pa.y + sin(angle - PI / 3) * unit
 		};
 		pc = {
-			x: p0.x + Math.cos(angle) * unit * 2,
-			y: p0.y + Math.sin(angle) * unit * 2
+			x: p0.x + cos(angle) * unit * 2,
+			y: p0.y + sin(angle) * unit * 2
 		};
 
 		if(depth === 0) {
