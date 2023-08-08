@@ -65,8 +65,8 @@ window.onload = function() {
 			y: pa.y + sin(angle - PI / 3) * unit
 		};
 		pc = {
-			x: p0.x + cos(angle) * unit * 2,
-			y: p0.y + sin(angle) * unit * 2
+			x: p0.x + cos(angle) * unit * 2, // funny things if x: pa.x * 2
+			y: p0.y + sin(angle) * unit * 2  // funny things if y: pa.y * 2
 		};
 
 		if(depth === 0) {
@@ -77,12 +77,13 @@ window.onload = function() {
 			chaos.context.lineTo(pc.x, pc.y);
 			chaos.context.lineTo(p1.x, p1.y);
 			chaos.context.stroke();
-		}
-		else {
-			koch(p0, pa, depth -1);
-			koch(pa, pb, depth -1);
-			koch(pb, pc, depth -1);
-			koch(pc, p1, depth -1);
-		}
+		} else {
+			let newDepth = depth - 1
+
+			koch(p0, pa, newDepth);
+			koch(pa, pb, newDepth);
+			koch(pb, pc, newDepth);
+			koch(pc, p1, newDepth);
+		};
 	}
 }
