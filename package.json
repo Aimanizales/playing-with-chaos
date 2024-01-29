@@ -25,7 +25,10 @@
     },
     "homepage": "https://github.com/Aimanizales/playing-with-chaos#readme",
     "devDependencies": {
-        "eslint": "^8.44.0"
+        "@types/node": "20.11.10",
+        "@types/react": "18.2.48",
+        "eslint": "^8.44.0",
+        "typescript": "5.3.3"
     },
     "dependencies": {
         "next": "^14.1.0",
