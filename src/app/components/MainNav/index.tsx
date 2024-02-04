@@ -20,6 +20,16 @@ export function MainNav() {
                 <li>
                     <Link
                         className={`link ${
+                            pathname === '/about' ? 'active' : ''
+                        }`}
+                        href="/about"
+                    >
+                        About
+                    </Link>
+                </li>
+                <li>
+                    <Link
+                        className={`link ${
                             pathname === '/chaos' ? 'active' : ''
                         }`}
                         href="/chaos"
