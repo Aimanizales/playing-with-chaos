@@ -3,7 +3,7 @@
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
 
-export function MainNav() {
+const MainNav = () => {
     const pathname = usePathname();
 
     return (
@@ -40,4 +40,6 @@ export function MainNav() {
             </ul>
         </nav>
     );
-}
+};
+
+export default MainNav;
