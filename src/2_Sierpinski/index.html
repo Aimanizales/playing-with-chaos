@@ -1,60 +1,72 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>2 - Sierpiński triangle</title>
-	<link rel="stylesheet" href="../reset.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet">
+  <head>
+    <title>2 - Sierpiński triangle</title>
+    <link rel="stylesheet" href="../reset.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="../style.css" />
-</head>
-<body>
-	<header>
-        <h1>Playing with Chaos</h1>
+  </head>
+  <body>
+    <header>
+      <h1>Playing with Chaos</h1>
     </header>
-	<div class="container">
-        <aside>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="../index.html">Index</a>
-                    </li>
-                    <li>
-                        <a href="../0_SourceCode/">0 SourceCode</a>
-                    </li>
-                    <li>
-                        <a href="../1_sample/">1 Sample</a>
-                    </li>
-                    <li>
-                        <span>2.1 The Sierpinksi Triangle</span>
-						<ul>
-							<li>
-								<a href="sierpinski_random.html">2.1.1 Random</a>
-							</li>
-							<li>
-								<a href="sierpinski_non_simmetry.html">2.1.2 Non Simmetry</a>
-							</li>
-						</ul>
-                    </li>
-                    <li>
-                        <a href="../2_Koch/">2.2 The Koch Curve</a>
-                    </li>
-                </ul>
-            </nav>
-        </aside>
-        <main>
-			<h2>2.1 Sierpiński triangle</h2>
-			<p>Wacław Sierpiński (1882 — 1969). Polish mathematician (<a href="https://www.wikiwand.com/en/Sierpi%C5%84ski_triangle" target="_blank">Wikipedia</a>)</p>
-			<p>[Press Space to iterate – Press P to generate image]</p>
-			<article>
-				<a href="https://dev.to/xtrp/how-to-generate-the-sierpinski-triangle-in-vanilla-javascript-with-html5-canvas-239d">Alternative option</a>
-			</article>
-			<canvas id="canvas"/>
-		</main>
+    <div class="container">
+      <aside>
+        <nav>
+          <ul>
+            <li>
+              <a href="../index.html">Index</a>
+            </li>
+            <li>
+              <a href="../0_SourceCode/">0 SourceCode</a>
+            </li>
+            <li>
+              <a href="../1_sample/">1 Sample</a>
+            </li>
+            <li>
+              <span>2.1 The Sierpinksi Triangle</span>
+              <ul>
+                <li>
+                  <a href="sierpinski_random.html">2.1.1 Random</a>
+                </li>
+                <li>
+                  <a href="sierpinski_non_simmetry.html">2.1.2 Non Simmetry</a>
+                </li>
+              </ul>
+            </li>
+            <li>
+              <a href="../2_Koch/">2.2 The Koch Curve</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main>
+        <h2>2.1 Sierpiński triangle</h2>
+        <p>
+          Wacław Sierpiński (1882 — 1969). Polish mathematician (<a
+            href="https://www.wikiwand.com/en/Sierpi%C5%84ski_triangle"
+            target="_blank"
+            >Wikipedia</a
+          >)
+        </p>
+        <p>[Press Space to iterate – Press P to generate image]</p>
+        <article>
+          <a
+            href="https://dev.to/xtrp/how-to-generate-the-sierpinski-triangle-in-vanilla-javascript-with-html5-canvas-239d"
+            >Alternative option</a
+          >
+        </article>
+        <canvas id="canvas" />
+      </main>
     </div>
 
-	<script type="text/javascript" src="../chaos.js"></script>
-	<script type="text/javascript" src="sierpinski.js"></script>
-	<script type="text/javascript" src="utils.js"></script>
-</body>
+    <script type="text/javascript" src="../chaos.js"></script>
+    <script type="text/javascript" src="sierpinski.js"></script>
+    <script type="text/javascript" src="utils.js"></script>
+  </body>
 </html>
