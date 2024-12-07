@@ -1,76 +1,77 @@
-html, body {
-    margin: 0 auto;
-    padding: 0;
-    background-color: #ddd;
-    font-family: 'IBM Plex Mono', monospace;
-    font-weight: 400;
+html,
+body {
+  margin: 0 auto;
+  padding: 0;
+  background-color: #ddd;
+  font-family: 'IBM Plex Mono', monospace;
+  font-weight: 400;
 }
 
 header {
-    padding: 16px;
-    background-color: #333;
+  padding: 16px;
+  background-color: #333;
 }
 
 header h1 {
-    font-size: 1.5rem;
-    text-align: left;
-    color: #eee;
+  font-size: 1.5rem;
+  text-align: left;
+  color: #eee;
 }
 
 aside {
-    background-color: #999;
-    color: white;
-    width: 200px;
+  background-color: #999;
+  color: white;
+  width: 200px;
 }
 
 nav li {
-    list-style-type: none;
-    font-weight: 300;
-    font-size: 12px;
-    font-weight: 500;
+  list-style-type: none;
+  font-weight: 300;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 nav li span {
-    padding: 8px 16px;
-    background-color: #333;
-    display: inline-block;
-    width: -webkit-fill-available;
+  padding: 8px 16px;
+  background-color: #333;
+  display: inline-block;
+  width: -webkit-fill-available;
 }
 
 nav li a {
-    color: white;
-    padding: 8px 16px;
-    display: inline-block;
-    text-decoration: none;
-    width: -webkit-fill-available;
+  color: white;
+  padding: 8px 16px;
+  display: inline-block;
+  text-decoration: none;
+  width: -webkit-fill-available;
 }
 
 nav li a:hover {
-    color: #ccc;
-    background-color: #333;
-    text-decoration:underline;
+  color: #ccc;
+  background-color: #333;
+  text-decoration: underline;
 }
 
- nav ul ul {
-    margin-left: 16px;
- }
+nav ul ul {
+  margin-left: 16px;
+}
 
 main {
-    padding: 8px;
+  padding: 8px;
 }
 
 main h2 {
-    font-size: 24px;
-    margin-bottom: 16px;
+  font-size: 24px;
+  margin-bottom: 16px;
 }
 
 canvas {
-    display: block;
-    margin: 0 auto;
-    background-color: white;
-    margin: 8px 0;
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+  margin: 8px 0;
 }
 
 .container {
-    display: flex;
+  display: flex;
 }
