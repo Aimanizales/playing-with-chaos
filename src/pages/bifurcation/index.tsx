@@ -4,41 +4,44 @@ export default function Page() {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    const CANVAS_WIDTH = 1024,
+      CANVAS_HEIGHT = 768;
+
     const canvas = canvasRef.current;
     const canvasContext = canvas.getContext('2d');
-    canvas.width = 1024;
-    canvas.height = 768;
 
-    const minR = 2;
-    const maxR = 4;
-    const minP = 0;
-    const maxP = 1;
+    canvas.width = CANVAS_WIDTH;
+    canvas.height = CANVAS_HEIGHT;
 
-    let p = 0.5;
-    let dr = (maxR - minR) / 1024;
-    let dp = (maxP - minP) / 768;
-    let interval = setInterval(iterate, 10);
-    let x = 0;
+    const minR = 2,
+      maxR = 4,
+      minP = 0,
+      maxP = 1,
+      dr = (maxR - minR) / CANVAS_WIDTH,
+      dp = (maxP - minP) / CANVAS_HEIGHT,
+      interval = setInterval(iterate, 10);
+
+    let population = 0.5,
+      x = 0;
 
     function iterate() {
-      p = 0.5;
-      for (var i = 0; i < 200; i += 1) {
+      for (let i = 0; i < 200; i += 1) {
         oneYear(i);
       }
-      x += 1;
-      if (x >= 1024) {
+      x = x + 1;
+      if (x >= CANVAS_WIDTH) {
         clearInterval(interval);
       }
     }
 
-    function oneYear(year) {
-      let r = minR + x * dr;
+    function oneYear(year: number) {
+      const r = minR + x * dr;
       let y;
 
-      p = p * r * (1 - p);
+      population = population * r * (1 - population); // Logistic map
 
       if (year > 100) {
-        y = 768 - (p - minP) / dp;
+        y = CANVAS_HEIGHT - (population - minP) / dp;
         canvasContext.fillRect(x, y, 1, 1);
       }
     }
@@ -46,7 +49,7 @@ export default function Page() {
 
   return (
     <section>
-      <h2>Bifurcation</h2>
+      <h2>Bifurcation diagram</h2>
       <canvas ref={canvasRef} />
     </section>
   );
