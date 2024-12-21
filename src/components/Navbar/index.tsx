@@ -1,7 +1,14 @@
+import Link from 'next/link';
+
 export const Navbar = () => {
   return (
     <nav>
-      <li>Bifurcation (2)</li>
+      <li>
+        <Link href="/">Index</Link>
+      </li>
+      <li>
+        <Link href="/bifurcation">Bifurcation (2)</Link>
+      </li>
       <li>Buddhabrot (1)</li>
       <li>Cellular (4)</li>
       <li>Chaos Game (3)</li>
