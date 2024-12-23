@@ -1,7 +1,8 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 export default function Page() {
   const canvasRef = useRef(null);
+  const [reproductionRate, setReproductionRate] = useState(0);
 
   useEffect(() => {
     const CANVAS_WIDTH = 1024,
@@ -21,7 +22,7 @@ export default function Page() {
       dp = (maxP - minP) / CANVAS_HEIGHT,
       interval = setInterval(iterate, 10);
 
-    let population = 0.5,
+    let population = 0.5, // in a given year
       x = 0;
 
     function iterate() {
@@ -35,10 +36,15 @@ export default function Page() {
     }
 
     function oneYear(year: number) {
-      const r = minR + x * dr;
+      /**
+        reproductionRate is a decimal number above 1. 
+        If 1.1, the population will increase by 10% each year. 2.0, population would double.
+       */
+      const rate = minR + x * dr;
+      setReproductionRate(rate);
       let y;
 
-      population = population * r * (1 - population); // Logistic map
+      population = population * rate * (1 - population); // Logistic map
 
       if (year > 100) {
         y = CANVAS_HEIGHT - (population - minP) / dp;
@@ -49,7 +55,8 @@ export default function Page() {
 
   return (
     <section>
-      <h2>Bifurcation diagram</h2>
+      <h2>Diagrama de bifurcación</h2>
+      <p>rate = {reproductionRate}</p>
       <canvas ref={canvasRef} />
     </section>
   );
