@@ -1,4 +1,5 @@
 import { Header } from '@/components/Header';
+import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 
 import { Inter } from 'next/font/google';
@@ -9,7 +10,10 @@ export default function Layout({ children }) {
   return (
     <>
       <Header />
-      <main className={inter.className}>{children}</main>
+      <div className="container">
+        <Navbar />
+        <main className={inter.className}>{children}</main>
+      </div>
       <Footer />
     </>
   );
