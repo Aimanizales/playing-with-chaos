@@ -26,3 +26,9 @@ nav {
 .container {
   display: flex;
 }
+
+canvas,
+main,
+section {
+  outline: none;
+}

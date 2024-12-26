@@ -10,9 +10,11 @@ export const Navbar = () => {
       <li>
         <Link href="/sample">Initial sample</Link>
       </li>
+      <li>
+        <Link href="/sierpinsky">The Sierpinski Gasket (1)</Link>
+      </li>
       <li>The Koch Curve (1)</li>
       <li>The Kock Snowflake (1)</li>
-      <li>The Sierpinski Gasket (1)</li>
       <li>Sierpinski non-symmetry (1)</li>
       <li>Sierpinski random (1)</li>
       <li>Buddhabrot (1)</li>
