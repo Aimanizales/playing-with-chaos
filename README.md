@@ -4,4 +4,8 @@ This repository contains all excercises from Keith Peter's book _Playing with ch
 
 ## Setup
 
-Install and run live-server extension in VSCode.
+1. Clone the repository.
+2. Change to `nextjs-chaos-migration` branch.
+3. Run `npm install`...
+4. ...and `npm run dev`.
+5. Open `http://localhost:3000/`.
