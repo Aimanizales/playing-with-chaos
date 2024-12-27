@@ -32,3 +32,7 @@ main,
 section {
   outline: none;
 }
+
+canvas {
+  border: thin solid #ddd;
+}

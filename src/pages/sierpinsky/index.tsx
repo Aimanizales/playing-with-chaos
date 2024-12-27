@@ -1,45 +1,54 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 export default function Page() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-  const [depth, setDepth] = useState<number>(0);
-  const [canvasContext, setCanvasContext] = useState(null);
-
   const RADIAN_INITIAL = -Math.PI * 0.5; // -90º
   const RADIAN_INCREMENT = (Math.PI * 2) / 3; // 120º
-  const CANVAS_SCALE = 300;
-  const MAX_DEPTH = 11;
+  const CANVAS_SCALE = 500;
+  const MAX_DEPTH = 10;
   const CANVAS_WIDTH = 1024;
   const CANVAS_HEIGHT = 768;
+  const [depth, setDepth] = useState<number>(0);
+  const [context, setContext] = useState(null);
 
-  const getPosition = (angle, scalar = 1) =>
-    [Math.cos(angle), Math.sin(angle)].map((pos) => pos * scalar);
+  const canvasRef = useCallback((node) => {
+    if (node) {
+      node.width = CANVAS_WIDTH;
+      node.height = CANVAS_HEIGHT;
+      const canvasContext = node.getContext('2d');
+      setContext(canvasContext);
+    }
+  }, []);
 
   function draw() {
-    canvasContext.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-    canvasContext.save();
-    canvasContext.translate(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.5);
-    canvasContext.scale(CANVAS_SCALE, CANVAS_SCALE);
+    if (context) {
+      context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      context.save();
+      context.translate(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.66);
+      context.scale(CANVAS_SCALE, CANVAS_SCALE);
 
-    drawTriangle(depth);
+      drawTriangle(depth);
 
-    canvasContext.restore();
+      context.restore();
+    }
   }
+
+  const getPosition = (angle: number, scalar = 1) =>
+    [Math.cos(angle), Math.sin(angle)].map((pos) => pos * scalar);
 
   function drawTriangle(depth: number) {
     let radian = RADIAN_INITIAL; // -90º
 
     if (depth === 0) {
-      canvasContext.beginPath();
-      canvasContext.moveTo(...getPosition(radian));
+      context.beginPath();
+      context.moveTo(...getPosition(radian));
 
       radian += RADIAN_INCREMENT; // 30º
-      canvasContext.lineTo(...getPosition(radian));
+      context.lineTo(...getPosition(radian));
 
       radian += RADIAN_INCREMENT; // 150º
-      canvasContext.lineTo(...getPosition(radian));
+      context.lineTo(...getPosition(radian));
 
-      canvasContext.fill();
+      context.fill();
     } else {
       relocateAndRedraw(radian, depth);
 
@@ -52,37 +61,29 @@ export default function Page() {
   }
 
   const relocateAndRedraw = (r: number, d: number) => {
-    canvasContext.save();
-    canvasContext.translate(...getPosition(r, 0.5));
-    canvasContext.scale(0.5, 0.5);
+    context.save();
+    context.translate(...getPosition(r, 0.5));
+    context.scale(0.5, 0.5);
     drawTriangle(d - 1);
-    canvasContext.restore();
+    context.restore();
   };
 
   function handleClick() {
-    const newDepth = depth + 1;
-    if (newDepth < MAX_DEPTH) {
-      draw();
+    if (depth < MAX_DEPTH) {
+      setDepth(depth + 1);
     }
-    setDepth(newDepth);
   }
 
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    canvas.width = CANVAS_WIDTH;
-    canvas.height = CANVAS_HEIGHT;
-
-    const context = canvas.getContext('2d');
-
-    setCanvasContext(context);
-
-    // draw();
-  }, []);
+  draw();
 
   return (
     <section>
       <h2>Sierpinsky</h2>
-      <p></p>
+      <p>Click below to generate the Sierpinsky gasket:</p>
+      <p>
+        Iteration {depth}/{MAX_DEPTH}
+      </p>
+      {/* <button>Reset</button> */}
       <canvas ref={canvasRef} onClick={handleClick} />
     </section>
   );
