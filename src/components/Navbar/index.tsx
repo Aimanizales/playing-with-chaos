@@ -11,7 +11,15 @@ export const Navbar = () => {
         <Link href="/sample">Initial sample</Link>
       </li>
       <li>
-        <Link href="/sierpinsky">The Sierpinski Gasket (1)</Link>
+        The Sierpinski Gasket
+        <ul>
+          <li>
+            <Link href="/sierpinsky">Simetric</Link>
+          </li>
+          <li>
+            <Link href="/sierpinsky/random">Random</Link>
+          </li>
+        </ul>
       </li>
       <li>The Koch Curve (1)</li>
       <li>The Kock Snowflake (1)</li>
