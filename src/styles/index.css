@@ -11,21 +11,35 @@ body {
 header {
   border-bottom: thin solid;
   padding-left: 1rem;
+  padding-top: 1rem;
+}
+
+header p {
+  margin-top: 0.2rem;
 }
 
 footer {
   border-top: thin solid;
+  padding: 1rem;
 }
 
 nav {
   border-right: thin solid;
-  list-style-type: none;
+  /* list-style-type: none; */
   padding: 1rem;
   min-width: 200px;
 }
 
 .container {
   display: flex;
+}
+
+ul {
+  margin: 0;
+}
+
+h1 {
+  margin: 0;
 }
 
 canvas,
