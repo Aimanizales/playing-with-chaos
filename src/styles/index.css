@@ -21,6 +21,7 @@ nav {
   border-right: thin solid;
   list-style-type: none;
   padding: 1rem;
+  min-width: 200px;
 }
 
 .container {
@@ -33,6 +34,9 @@ section {
   outline: none;
 }
 
+main {
+  padding: 1rem;
+}
 canvas {
   border: thin solid #ddd;
 }

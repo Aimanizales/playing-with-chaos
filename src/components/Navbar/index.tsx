@@ -6,7 +6,9 @@ export const Navbar = () => {
       <li>
         <Link href="/">Index</Link>
       </li>
-      <li>What is a fractal?</li>
+      <li>
+        <Link href="/fractal">What is a fractal?</Link>
+      </li>
       <li>
         <Link href="/sample">Initial sample</Link>
       </li>
@@ -17,10 +19,16 @@ export const Navbar = () => {
             <Link href="/sierpinsky">Simetric</Link>
           </li>
           <li>
-            <Link href="/sierpinsky/random">Random</Link>
+            Random (WIP)
+            {/* <Link href="/sierpinsky/random">
+          </Link> */}
           </li>
         </ul>
       </li>
+      <li>
+        <Link href="/bifurcation">Bifurcation (2)</Link>
+      </li>
+
       <li>The Koch Curve (1)</li>
       <li>The Kock Snowflake (1)</li>
       <li>Sierpinski non-symmetry (1)</li>
@@ -37,9 +45,6 @@ export const Navbar = () => {
       <li>Julia (2)</li>
       <li>Lighting (1)</li>
       <li>Lindenmayer (2)</li>
-      <li>
-        <Link href="/bifurcation">Bifurcation (2)</Link>
-      </li>
       <li>Lorenz (2)</li>
       <li>Mandelbrot (4 + 1)</li>
       <li>Pickover (1)</li>

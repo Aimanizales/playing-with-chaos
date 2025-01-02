@@ -57,6 +57,10 @@ export default function Page() {
     <section>
       <h2>Diagrama de bifurcación</h2>
       <p>rate = {reproductionRate}</p>
+      <p>
+        Reproducción visual de cómo una función logística tiene a un sistema
+        caótico (Butterfly Effect, Philip Merilees, 1972).
+      </p>
       <canvas ref={canvasRef} />
     </section>
   );
