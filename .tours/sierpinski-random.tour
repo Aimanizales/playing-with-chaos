@@ -1,0 +1,17 @@
+{
+  "$schema": "https://aka.ms/codetour-schema",
+  "title": "sierpinski random",
+  "steps": [
+    {
+      "file": "src/2_Sierpinski/sierpinski_random.js",
+      "description": "Se crea triangles = [[]]",
+      "line": 29
+    },
+    {
+      "file": "src/2_Sierpinski/sierpinski_random.js",
+      "description": "Se agregan los tres primeros vértices:\n[[{x,y},{x,y},{x,y}]]",
+      "line": 31
+    }
+  ],
+  "ref": "nextjs-chaos-migration"
+}

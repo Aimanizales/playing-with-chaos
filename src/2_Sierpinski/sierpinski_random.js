@@ -6,8 +6,7 @@ window.onload = function () {
   init();
 
   function init() {
-    let i,
-      angle = -Math.PI * 0.5;
+    let angle = -Math.PI * 0.5;
 
     chaos.init();
 
@@ -29,14 +28,13 @@ window.onload = function () {
 
     triangles[0] = [];
 
-    for (i = 0; i < 3; i += 1) {
+    for (let i = 0; i < 3; i += 1) {
       triangles[0].push({
         x: chaos.width * 0.5 + Math.cos(angle) * chaos.height * 0.5,
         y: chaos.height * 0.65 + Math.sin(angle) * chaos.height * 0.5,
       });
       angle += (Math.PI * 2) / 3;
     }
-    console.log(triangles);
 
     draw();
   }
