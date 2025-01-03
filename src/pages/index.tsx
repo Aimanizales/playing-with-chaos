@@ -12,14 +12,12 @@ export default function Page() {
         </a>{' '}
         de Keith Peters.
       </p>
-      <p>
-        <h3>Objetivos principales:</h3>
-        <ol>
-          <li>Migrar y optimizar los ejercicios originales a ES6+.</li>
-          <li>Comprender y aplicar la arquitectura de React/NextJS.</li>
-          <li>Implementar Typescript.</li>
-        </ol>
-      </p>
+      <h3>Objetivos principales:</h3>
+      <ol>
+        <li>Migrar y optimizar los ejercicios originales a ES6+.</li>
+        <li>Comprender y aplicar la arquitectura de React/NextJS.</li>
+        <li>Implementar Typescript.</li>
+      </ol>
     </>
   );
 }
