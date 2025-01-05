@@ -13,6 +13,9 @@ export const Navbar = () => {
         <Link href="/sample">Initial sample</Link>
       </li>
       <li>
+        <Link href="/kock">The Koch Curve</Link>
+      </li>
+      <li>
         The Sierpinski Gasket
         <ul>
           <li>
@@ -29,7 +32,6 @@ export const Navbar = () => {
         <Link href="/bifurcation">Bifurcation (2)</Link>
       </li>
 
-      <li>The Koch Curve (1)</li>
       <li>The Kock Snowflake (1)</li>
       <li>Sierpinski non-symmetry (1)</li>
       <li>Sierpinski random (1)</li>
