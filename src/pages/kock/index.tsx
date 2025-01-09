@@ -5,7 +5,7 @@ export default function Page() {
   const CANVAS_HEIGHT = 768;
   const CANVAS_SCALE = 500;
   const MAX_DEPTH = 10;
-  const [depth, setDepth] = useState<number>(0);
+  const [maxDepth, setMaxDepth] = useState<number>(0);
   const [context, setContext] = useState(null);
   const { sqrt, sin, cos, atan2, PI } = Math;
 
@@ -17,41 +17,42 @@ export default function Page() {
 
       setContext(canvasContext);
     }
+    console.log('useCallback');
   }, []);
 
   function draw() {
     if (context) {
-      // context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-      // context.save();
-      // context.translate(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.66);
-      // context.scale(CANVAS_SCALE, CANVAS_SCALE);
-      // context.restore();
+      context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
+      context.save();
+      context.translate(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.66);
+      context.scale(CANVAS_SCALE, CANVAS_SCALE);
+      context.restore();
+
+      console.log('aa context', context);
 
       let p0 = {
-        x: context.width * 0.1,
-        y: context.height * 0.75,
+        x: CANVAS_WIDTH * 0.1,
+        y: CANVAS_HEIGHT * 0.75,
       };
 
       let p1 = {
-        x: context.width * 0.9,
-        y: context.height * 0.75,
+        x: CANVAS_WIDTH * 0.9,
+        y: CANVAS_HEIGHT * 0.75,
       };
 
-      context.lineWidth = 2;
+      context.lineWidth = 1;
 
-      koch(p0, p1);
+      koch(p0, p1, maxDepth);
     }
   }
 
-  function koch(p0, p1) {
+  function koch(p0, p1, depth) {
+    console.log('kock() depth', depth);
     let dx = p1.x - p0.x,
       dy = p1.y - p0.y,
-      // the length of the main segment:
-      dist = sqrt(dx * dx + dy * dy),
-      // the length of each sub-segment:
-      unit = dist / 3,
-      // the angle of the main segment:
-      angle = atan2(dy, dx),
+      dist = sqrt(dx * dx + dy * dy), // length of the main segment
+      unit = dist / 3, // length of each sub-segment
+      angle = atan2(dy, dx), // angle of the main segment
       pa,
       pb,
       pc;
@@ -81,19 +82,22 @@ export default function Page() {
       context.lineTo(p1.x, p1.y);
       context.stroke();
     } else {
-      koch(p0, pa);
-      koch(pa, pb);
-      // koch(pb, pc);
-      // koch(pc, p1);
+      let newDepth = maxDepth - 1;
+      koch(p0, pa, newDepth);
+      koch(pa, pb, newDepth);
+      koch(pb, pc, newDepth);
+      koch(pc, p1, newDepth);
     }
   }
 
   function handleClick() {
-    if (depth < MAX_DEPTH) {
-      setDepth(depth + 1);
+    if (maxDepth < MAX_DEPTH) {
+      setMaxDepth(maxDepth + 1);
       draw();
     }
   }
+
+  draw();
 
   return (
     <section>
