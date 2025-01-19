@@ -2,12 +2,20 @@ import { useCallback, useState } from 'react';
 
 export default function Page() {
   const CANVAS_WIDTH = 1024;
-  const CANVAS_HEIGHT = 768;
-  const CANVAS_SCALE = 500;
-  const MAX_DEPTH = 10;
-  const [maxDepth, setMaxDepth] = useState<number>(0);
+  const CANVAS_HEIGHT = 400;
+  const MAX_ITERATIONS = 5;
+  const [iteration, setIteration] = useState<number>(0);
   const [context, setContext] = useState(null);
   const { sqrt, sin, cos, atan2, PI } = Math;
+  const pInitial = {
+    x: CANVAS_WIDTH * 0.1,
+    y: CANVAS_HEIGHT * 0.75,
+  };
+
+  const pFinal = {
+    x: CANVAS_WIDTH * 0.9,
+    y: CANVAS_HEIGHT * 0.75, // same as pInitial but can be changed.
+  };
 
   const canvasRef = useCallback((node) => {
     if (node) {
@@ -17,7 +25,6 @@ export default function Page() {
 
       setContext(canvasContext);
     }
-    console.log('useCallback');
   }, []);
 
   function draw() {
@@ -25,34 +32,19 @@ export default function Page() {
       context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
       context.save();
       context.translate(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.66);
-      context.scale(CANVAS_SCALE, CANVAS_SCALE);
       context.restore();
-
-      console.log('aa context', context);
-
-      let p0 = {
-        x: CANVAS_WIDTH * 0.1,
-        y: CANVAS_HEIGHT * 0.75,
-      };
-
-      let p1 = {
-        x: CANVAS_WIDTH * 0.9,
-        y: CANVAS_HEIGHT * 0.75,
-      };
-
       context.lineWidth = 1;
 
-      koch(p0, p1, maxDepth);
+      koch(pInitial, pFinal, iteration);
     }
   }
 
   function koch(p0, p1, depth) {
-    console.log('kock() depth', depth);
     let dx = p1.x - p0.x,
       dy = p1.y - p0.y,
       dist = sqrt(dx * dx + dy * dy), // length of the main segment
       unit = dist / 3, // length of each sub-segment
-      angle = atan2(dy, dx), // angle of the main segment
+      angle = atan2(dy, dx), // angle of the main segment measured in radians.
       pa,
       pb,
       pc;
@@ -71,8 +63,6 @@ export default function Page() {
       y: p0.y + sin(angle) * unit * 2, // funny things if y: pa.y * 2
     };
 
-    console.log('+aa ~ depth:', depth);
-
     if (depth === 0) {
       context.beginPath();
       context.moveTo(p0.x, p0.y);
@@ -82,7 +72,7 @@ export default function Page() {
       context.lineTo(p1.x, p1.y);
       context.stroke();
     } else {
-      let newDepth = maxDepth - 1;
+      let newDepth = depth - 1;
       koch(p0, pa, newDepth);
       koch(pa, pb, newDepth);
       koch(pb, pc, newDepth);
@@ -91,8 +81,8 @@ export default function Page() {
   }
 
   function handleClick() {
-    if (maxDepth < MAX_DEPTH) {
-      setMaxDepth(maxDepth + 1);
+    if (iteration < MAX_ITERATIONS) {
+      setIteration(iteration + 1);
       draw();
     }
   }
@@ -103,6 +93,7 @@ export default function Page() {
     <section>
       <h2>Kock Curve</h2>
       <p>Click below to generate:</p>
+      Iteration: {iteration} of {MAX_ITERATIONS}
       <canvas ref={canvasRef} onClick={handleClick} />
     </section>
   );
