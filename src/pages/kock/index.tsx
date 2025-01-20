@@ -87,14 +87,40 @@ export default function Page() {
     }
   }
 
+  function handleReset() {
+    setIteration(0);
+    draw();
+  }
+
   draw();
 
   return (
     <section>
-      <h2>Kock Curve</h2>
-      <p>Click below to generate:</p>
+      <h2>La curva de Kock (Kock curve)</h2>
+      <h3>Descripción:</h3>
+      <p>
+        Este es el primer fractal auto-similar descrito en 1904 por el
+        matemático sueco Niels Fabian Helge von Koch (1870-1924). <br />
+      </p>
+      <h3>Propiedades</h3>
+      <ul>
+        <li>Tiene una longitud infinita.</li>
+        <li>Dimensión fractal (D) = ln4/ln3 = 1.272618 (verificar).</li>
+        <li>Es continua mas no derivable.</li>
+      </ul>
+      <p>
+        Más información:{' '}
+        <a
+          href="https://www.enriclopezruestes.cat/es/curva-de-Koch/"
+          target="_blank"
+        >
+          enriclopezruestes.cat/es/curva-de-Koch
+        </a>
+      </p>
+      <p>Clic sobre el rectánculo para generar:</p>
       Iteration: {iteration} of {MAX_ITERATIONS}
       <canvas ref={canvasRef} onClick={handleClick} />
+      <button onClick={handleReset}>reset</button>
     </section>
   );
 }
