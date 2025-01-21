@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 
 export default function Page() {
   const CANVAS_WIDTH = 1024;
@@ -27,17 +27,17 @@ export default function Page() {
     }
   }, []);
 
-  function draw() {
+  useEffect(() => {
     if (context) {
       context.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
-      context.save();
+      context.save(); // saves the entire state of the canvas by pushing the current state onto a stack.
       context.translate(CANVAS_WIDTH * 0.5, CANVAS_HEIGHT * 0.66);
-      context.restore();
+      context.restore(); // restores the most recently saved canvas state by popping the top entry in the drawing state stack.
       context.lineWidth = 1;
 
       koch(pInitial, pFinal, iteration);
     }
-  }
+  }, [context, iteration]);
 
   function koch(p0, p1, depth) {
     let dx = p1.x - p0.x,
@@ -63,6 +63,10 @@ export default function Page() {
       y: p0.y + sin(angle) * unit * 2, // funny things if y: pa.y * 2
     };
 
+    // console.log('kock()', depth);
+    // console.log({ p0, p1, depth, dx, dy, dist, unit, angle });
+    // console.log({ pa, pb, pc });
+
     if (depth === 0) {
       context.beginPath();
       context.moveTo(p0.x, p0.y);
@@ -74,8 +78,11 @@ export default function Page() {
     } else {
       let newDepth = depth - 1;
       koch(p0, pa, newDepth);
+      // debugger;
       koch(pa, pb, newDepth);
+      // debugger;
       koch(pb, pc, newDepth);
+      // debugger;
       koch(pc, p1, newDepth);
     }
   }
@@ -83,16 +90,12 @@ export default function Page() {
   function handleClick() {
     if (iteration < MAX_ITERATIONS) {
       setIteration(iteration + 1);
-      draw();
     }
   }
 
   function handleReset() {
     setIteration(0);
-    draw();
   }
-
-  draw();
 
   return (
     <section>
