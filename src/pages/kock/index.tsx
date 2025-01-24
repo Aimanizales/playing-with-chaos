@@ -128,6 +128,11 @@ export default function Page() {
         <li>Se repite el paso 1 y 2 en los lados del triángulo anterior.</li>
         <li>Se repite el ciclo.</li>
       </ol>
+      <hr />
+      <p>Clic sobre el rectángulo para generar:</p>
+      <canvas ref={canvasRef} onClick={handleClick} />
+      Iteration: {iteration} of {MAX_ITERATIONS} <br />
+      <button onClick={handleReset}>reset</button>
       <h3>Propiedades</h3>
       <ul>
         <li>Tiene una longitud infinita.</li>
@@ -157,11 +162,6 @@ export default function Page() {
           https://larryriddle.agnesscott.org/ifs/ksnow/ksnow.htm
         </a>
       </p>
-      <hr />
-      <p>Clic sobre el rectángulo para generar:</p>
-      <canvas ref={canvasRef} onClick={handleClick} />
-      Iteration: {iteration} of {MAX_ITERATIONS} <br />
-      <button onClick={handleReset}>reset</button>
     </section>
   );
 }

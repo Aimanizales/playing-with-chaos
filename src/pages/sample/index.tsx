@@ -44,8 +44,11 @@ export default function Page() {
 
   return (
     <section>
-      <h2>Initial sample</h2>
-      <p>No es un fractal, es para analizar los ciclos en canvas con React.</p>
+      <h2>Ejemplo canvas</h2>
+      <p>
+        Esto no es un fractal, es solo para analizar los ciclos en canvas con
+        React.
+      </p>
       <canvas ref={canvasRef} />
     </section>
   );

@@ -74,16 +74,20 @@ export default function Page() {
     }
   }
 
-  draw();
+  function handleReset() {
+    setDepth(0);
+  }
+
+  draw(); // TODO: verify this function call.
 
   return (
     <section>
-      <h2>Sierpinsky</h2>
-      <p>Click below to generate the Sierpinsky gasket:</p>
+      <h2>Triángulo de Sierpinsky (Sierpinsky Gasket)</h2>
+      <p>Clic en el rectángulo para generar</p>
       <p>
         Iteration {depth}/{MAX_DEPTH}
       </p>
-      {/* <button>Reset</button> */}
+      <button onClick={handleReset}>Reset</button>
       <canvas ref={canvasRef} onClick={handleClick} />
     </section>
   );
