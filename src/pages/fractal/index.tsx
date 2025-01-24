@@ -1,3 +1,5 @@
+import { books } from './books';
+
 export default function Page() {
   return (
     <section>
@@ -9,33 +11,25 @@ export default function Page() {
         <i>fractus</i> que significa "quebrado" o "fracturado".
       </p>
       <h3>Referencias:</h3>
-      <ul>
+      <ul className="references-list">
         <li>
-          Caos y complejidad ¿Un desorden ordenado?
+          Caos y complejidad ¿Un desorden ordenado? <br />
           <a href="https://www.youtube.com/watch?v=zrql6aTQgfk" target="_blank">
             youtube.com/watch?v=zrql6aTQgfk
           </a>
         </li>
         <li>
-          Fractals, Chaos, Self Similarity{' '}
+          Fractals, Chaos, Self Similarity
+          <br />
           <a href="https://paulbourke.net/fractals/" target="_blank">
             paulbourke.net/fractals
           </a>
         </li>
         <li>
           BIT-101: About
+          <br />
           <a href="https://bit-101.com/blog/pages/about/" target="_blank">
             bit-101.com/blog/pages/about
-          </a>
-        </li>
-        <li>
-          Playing with Chaos: Programming Fractals and Strange Attractors in
-          JavaScript{' '}
-          <a
-            href="https://www.goodreads.com/book/show/19262140-playing-with-chaos"
-            target="_blank"
-          >
-            goodreads.com/book/show/19262140-playing-with-chaos
           </a>
         </li>
         <li>
@@ -49,13 +43,31 @@ export default function Page() {
         </li>
       </ul>
       <h3>Libros:</h3>
-      <ul>
-        <li>
+      Esta es una lista en mi{' '}
+      <a
+        href="https://www.goodreads.com/review/list/1090861-aiman-abdel-samad?shelf=chaos"
+        target="_blank"
+      >
+        Goodreads
+      </a>{' '}
+      de libros sobre teoría del caos.
+      <p>Acá una selección de mis favoritos:</p>
+      <ul className="references-list">
+        {books.map(({ title, author, editorial, publishDate, link }, index) => (
+          <li key={index}>
+            <i>{title}</i>
+            <span className="editorial">{` (${publishDate}) ${editorial} `}</span>
+            <br />
+            <span className="author">{author}</span>
+            <br />
+            <a href={link} target="_blank">
+              Ver más
+            </a>
+          </li>
+        ))}
+        {/* <li>
           The Fractal Geometry of Nature{' '}
-          <a
-            href="https://www.amazon.com/Fractal-Geometry-Nature-Benoit-Mandelbrot/dp/1648370403/ref=sr_1_2?crid=123UMVMALPF9J&dib=eyJ2IjoiMSJ9.mDXDlq3kEl0YOyrzykZd1JjKj4zaGM9Lu5oDTqDqcBnsFdxUAdyoezIgYruJQjV75PR4KYGwbkQ_GgiYPIIbGtJUVmFINNg5nTTmLrW6TGyueW8bzVdiv-U5BNs7kMpFVJQpLZlth251sNdwA9xBMG5NjT6Pjg0N-ZCtLCBQZit2i3gK6VpaXX8_uAXUMZFFkgCOPyHMC7WpWDk4pXpZ3i63FSgvYRZBMJk3FmqizFI.2jwqc3E2ZhmNt2Qq4aU_zDtqg3CiMjMHY_BTrQMZHrE&dib_tag=se&keywords=the+fractal+geometry+of+nature&qid=1733522970&s=books&sprefix=The+Fractal+geo%2Cstripbooks-intl-ship%2C416&sr=1-2"
-            target="_blank"
-          >
+          <a href="" target="_blank">
             Amazon
           </a>
         </li>
@@ -97,42 +109,43 @@ export default function Page() {
           <a href="https://www.wolframscience.com/" target="_blank">
             wolframscience.com
           </a>
-        </li>
+        </li> */}
       </ul>
       <h3>Websites:</h3>
-      <ul>
+      <ul className="references-list">
         <li>
-          Clifford A. Pickover's Home Page
+          Clifford A. Pickover's Home Page <br />
           <a
             href="https://sprott.physics.wisc.edu/pickover/home.htm"
             target="_blank"
           >
-            ]{'  '}
+            {'  '}
             sprott.physics.wisc.edu/pickover/home.htm
           </a>
         </li>
         <li>
-          Sprott's Gateway
+          Sprott's Gateway <br />
           <a href="" target="_blank">
             http://sprott.physics.wisc.edu/
           </a>{' '}
+          <br />
           Sprott is the author of the book on strange attractors mentioned just
           previously. There are many other fractal resources listed on his page.
         </li>
         <li>
-          Fractals, Chaos, Self Similarity
+          Fractals, Chaos, Self Similarity <br />
           <a href="http://paulbourke.net/fractals/" target="_blank">
             paulbourke.net/fractals
           </a>
         </li>
 
         <li>
-          Yale Fractals
+          Yale Fractals <br />
           <a href="http://classes.yale.edu/fractals/" target="_blank">
             classes.yale.edu/fractals
           </a>{' '}
-          A fantastic resource for just about all aspects of chaos theory and
-          fractals. This site is very clearly written and understandable.
+          <br />A fantastic resource for just about all aspects of chaos theory
+          and fractals. This site is very clearly written and understandable.
         </li>
       </ul>
     </section>
