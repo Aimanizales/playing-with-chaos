@@ -1,4 +1,4 @@
-import { useCallback, useContext, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function Page() {
   const CANVAS_WIDTH = 1024;
@@ -39,7 +39,11 @@ export default function Page() {
     }
   }, [context, iteration]);
 
-  function koch(p0, p1, depth) {
+  function koch(
+    p0: { x: number; y: number },
+    p1: { x: number; y: number },
+    depth: number
+  ) {
     let dx = p1.x - p0.x,
       dy = p1.y - p0.y,
       dist = sqrt(dx * dx + dy * dy), // length of the main segment
@@ -66,6 +70,8 @@ export default function Page() {
     // console.log('kock()', depth);
     // console.log({ p0, p1, depth, dx, dy, dist, unit, angle });
     // console.log({ pa, pb, pc });
+
+    // debugger;
 
     if (depth === 0) {
       context.beginPath();
@@ -99,30 +105,62 @@ export default function Page() {
 
   return (
     <section>
-      <h2>La curva de Kock (Kock curve)</h2>
-      <h3>Descripción:</h3>
+      <h2>Curva de Kock</h2>
       <p>
         Este es el primer fractal auto-similar descrito en 1904 por el
-        matemático sueco Niels Fabian Helge von Koch (1870-1924). <br />
+        matemático sueco{' '}
+        <b>
+          <a
+            href="https://es.wikipedia.org/wiki/Helge_von_Koch"
+            target="_blank"
+          >
+            Niels Fabian Helge von Koch
+          </a>
+        </b>{' '}
+        (1870-1924). <br />
       </p>
+      <h3>Construcción</h3>
+      <ol>
+        <li>Se divide una línea en tres segmentos.</li>
+        <li>
+          El segmento de la mitad se convierte en un triángulo equilátero.
+        </li>
+        <li>Se repite el paso 1 y 2 en los lados del triángulo anterior.</li>
+        <li>Se repite el ciclo.</li>
+      </ol>
       <h3>Propiedades</h3>
       <ul>
         <li>Tiene una longitud infinita.</li>
         <li>Dimensión fractal (D) = ln4/ln3 = 1.272618 (verificar).</li>
-        <li>Es continua mas no derivable.</li>
+        <li>Es una línea continua no derivable.</li>
       </ul>
+      <h3>Más información</h3>
       <p>
-        Más información:{' '}
         <a
           href="https://www.enriclopezruestes.cat/es/curva-de-Koch/"
           target="_blank"
         >
-          enriclopezruestes.cat/es/curva-de-Koch
+          www.enriclopezruestes.cat/es/curva-de-Koch
+        </a>{' '}
+        <br />
+        <a
+          href="https://es.wikipedia.org/wiki/Copo_de_nieve_de_Koch"
+          target="_blank"
+        >
+          wikipedia.org/wiki/Copo_de_nieve_de_Koch
+        </a>{' '}
+        <br />
+        <a
+          href="https://larryriddle.agnesscott.org/ifs/ksnow/ksnow.htm"
+          target="_blank"
+        >
+          https://larryriddle.agnesscott.org/ifs/ksnow/ksnow.htm
         </a>
       </p>
-      <p>Clic sobre el rectánculo para generar:</p>
-      Iteration: {iteration} of {MAX_ITERATIONS}
+      <hr />
+      <p>Clic sobre el rectángulo para generar:</p>
       <canvas ref={canvasRef} onClick={handleClick} />
+      Iteration: {iteration} of {MAX_ITERATIONS} <br />
       <button onClick={handleReset}>reset</button>
     </section>
   );

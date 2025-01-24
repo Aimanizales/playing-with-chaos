@@ -25,9 +25,22 @@ footer {
 
 nav {
   border-right: thin solid;
-  /* list-style-type: none; */
+  list-style-type: none;
   padding: 1rem;
   min-width: 200px;
+}
+
+nav li a {
+  color: #333;
+  padding: 0.3rem 0.5rem;
+  text-decoration: none;
+  display: inline-block;
+  width: 100%;
+}
+
+nav li a:hover,
+nav li.selected a {
+  background-color: #ddd;
 }
 
 .container {
