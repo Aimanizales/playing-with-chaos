@@ -10,12 +10,12 @@ body {
 
 header {
   border-bottom: thin solid;
-  padding-left: 1rem;
-  padding-top: 1rem;
+  padding: 1rem 0 1rem 1rem;
+  background-color: #d8d8d8;
 }
 
 header p {
-  margin-top: 0.2rem;
+  margin: 0.2rem 0 0 0;
 }
 
 footer {
@@ -24,10 +24,10 @@ footer {
 }
 
 nav {
-  border-right: thin solid;
   list-style-type: none;
   padding: 1rem;
   min-width: 200px;
+  background-color: #e8e8e8;
 }
 
 nav li span {
@@ -46,11 +46,12 @@ nav li a {
 
 nav li a:hover,
 nav li.selected a {
-  background-color: #ddd;
+  background-color: #f1f1f1;
 }
 
 .container {
   display: flex;
+  background-color: #f1f1f1;
 }
 
 ul {
@@ -71,7 +72,9 @@ main {
   padding: 1rem;
 }
 canvas {
-  border: thin solid #ddd;
+  margin-top: 1rem;
+  background-color: white;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
 }
 
 section {
