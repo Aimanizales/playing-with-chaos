@@ -11,21 +11,21 @@ export const Navbar = () => {
   }
   return (
     <nav>
-      {menuItems.map(
-        (item, index) =>
-          item.link &&
-          item.link !== '' && (
-            <li className={currentItem === index ? 'selected' : ''} key={index}>
-              <Link
-                onClick={() => handleClick(index)}
-                href={item.link}
-                data-index={index}
-              >
-                {item.name}
-              </Link>
-            </li>
-          )
-      )}
+      {menuItems.map((item, index) => (
+        <li className={currentItem === index ? 'selected' : ''} key={index}>
+          {item.link && item.link !== '' ? (
+            <Link
+              onClick={() => handleClick(index)}
+              href={item.link}
+              data-index={index}
+            >
+              {item.name}
+            </Link>
+          ) : (
+            <span>{item.name}</span>
+          )}
+        </li>
+      ))}
     </nav>
   );
 };

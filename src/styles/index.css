@@ -30,12 +30,18 @@ nav {
   min-width: 200px;
 }
 
+nav li span {
+  opacity: 0.3;
+  padding: 0.2rem 0.5rem;
+  display: inline-block;
+}
+
 nav li a {
   color: #333;
-  padding: 0.3rem 0.5rem;
   text-decoration: none;
   display: inline-block;
   width: 100%;
+  padding: 0.2rem 0.5rem;
 }
 
 nav li a:hover,
@@ -69,5 +75,22 @@ canvas {
 }
 
 section {
-  max-width: 700px;
+  max-width: 1020px;
+}
+
+.references-list {
+  list-style-type: none;
+  margin-top: 1rem;
+}
+
+.references-list li {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.references-list li .editorial,
+.references-list li .author,
+.references-list li a {
+  font-size: 0.9rem;
+  color: #555;
 }

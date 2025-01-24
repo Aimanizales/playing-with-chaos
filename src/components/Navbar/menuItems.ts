@@ -1,5 +1,3 @@
-import { link } from 'fs';
-
 export const menuItems = [
   {
     name: 'Index',
@@ -24,9 +22,6 @@ export const menuItems = [
   {
     name: 'Bifurcación',
     link: '/bifurcation',
-  },
-  {
-    name: 'Bifurcación',
   },
   { name: 'The Kock Snowflake (1)' },
   { name: 'Sierpinski non-symmetry (1)' },
