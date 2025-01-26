@@ -20,8 +20,8 @@ export const menuItems = [
     link: '/sierpinsky',
   },
   {
-    name: 'Bifurcación',
-    link: '/bifurcation',
+    name: 'Diagrama de bifurcación logística',
+    link: '/logistic-map',
   },
   { name: 'Sierpinski non-symmetry (1)' },
   { name: 'Sierpinski random (1)' },

@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
 
-export default function Page() {
+export default function LogisticMap() {
   const canvasRef = useRef(null);
   const [reproductionRate, setReproductionRate] = useState(0);
 
   useEffect(() => {
-    const CANVAS_WIDTH = 1024,
-      CANVAS_HEIGHT = 768;
+    const CANVAS_WIDTH = 900,
+      CANVAS_HEIGHT = 500;
 
     const canvas = canvasRef.current;
     const canvasContext = canvas.getContext('2d');
@@ -53,15 +53,11 @@ export default function Page() {
     }
   }, []);
 
+  //TODO: add reset button
   return (
-    <section>
-      <h2>Diagrama de bifurcación</h2>
+    <>
       <p>rate = {reproductionRate}</p>
-      <p>
-        Reproducción visual de cómo una función logística tiene a un sistema
-        caótico (Butterfly Effect, Philip Merilees, 1972).
-      </p>
       <canvas ref={canvasRef} />
-    </section>
+    </>
   );
 }

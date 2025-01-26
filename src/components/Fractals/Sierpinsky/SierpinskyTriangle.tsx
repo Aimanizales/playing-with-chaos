@@ -86,7 +86,7 @@ export default function SierpinskyTriangle() {
   return (
     <>
       Iteration {depth}/{MAX_DEPTH} <br />
-      <button onClick={handleReset}>Reset</button>
+      <button onClick={handleReset}>Reset</button> <br />
       <canvas ref={canvasRef} onClick={handleClick} />
     </>
   );
