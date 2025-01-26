@@ -16,6 +16,10 @@ export const menuItems = [
     link: '/kock',
   },
   {
+    name: 'Copo de nieve de Kock',
+    link: '/kock/snowflake',
+  },
+  {
     name: 'Triángulo de Sierpinski',
     link: '/sierpinsky',
   },

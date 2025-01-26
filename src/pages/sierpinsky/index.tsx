@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 export default function Page() {
   const RADIAN_INITIAL = -Math.PI * 0.5; // -90º
@@ -18,6 +18,11 @@ export default function Page() {
       setContext(canvasContext);
     }
   }, []);
+
+  useEffect(() => {
+    draw();
+  }, [context, depth]);
+  // draw(); // TODO: verify this function call.
 
   function draw() {
     if (context) {
@@ -77,8 +82,6 @@ export default function Page() {
   function handleReset() {
     setDepth(0);
   }
-
-  draw(); // TODO: verify this function call.
 
   return (
     <section>
