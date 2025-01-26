@@ -12,12 +12,8 @@ export const menuItems = [
     link: '/sample',
   },
   {
-    name: 'Curva de Kock',
-    link: '/kock',
-  },
-  {
-    name: 'Copo de nieve de Kock',
-    link: '/kock/snowflake',
+    name: 'Copo de nieve de Koch',
+    link: '/koch',
   },
   {
     name: 'Triángulo de Sierpinski',
@@ -27,7 +23,6 @@ export const menuItems = [
     name: 'Bifurcación',
     link: '/bifurcation',
   },
-  { name: 'The Kock Snowflake (1)' },
   { name: 'Sierpinski non-symmetry (1)' },
   { name: 'Sierpinski random (1)' },
   { name: 'Buddhabrot (1)' },

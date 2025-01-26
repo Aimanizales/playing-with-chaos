@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
-export default function Page() {
+export default function Koch() {
   const CANVAS_WIDTH = 1024;
   const CANVAS_HEIGHT = 400;
   const MAX_ITERATIONS = 5;
@@ -102,46 +102,11 @@ export default function Page() {
   function handleReset() {
     setIteration(0);
   }
-
   return (
-    <section>
-      <h2>Copo de nieve de Kock</h2>
-      <p></p>
-      <h3>Construcción</h3>
-      <hr />
-      <p>Clic sobre el rectángulo para generar:</p>
+    <>
       <canvas ref={canvasRef} onClick={handleClick} />
-      Iteration: {iteration} of {MAX_ITERATIONS} <br />
+      Iteration: {iteration} of {MAX_ITERATIONS}
       <button onClick={handleReset}>reset</button>
-      <h3>Propiedades</h3>
-      <ul>
-        <li>Tiene una longitud infinita.</li>
-        <li>Dimensión fractal (D) = ln4/ln3 = 1.272618 (verificar).</li>
-        <li>Es una línea continua no derivable.</li>
-      </ul>
-      <h3>Más información</h3>
-      <p>
-        <a
-          href="https://www.enriclopezruestes.cat/es/curva-de-Koch/"
-          target="_blank"
-        >
-          www.enriclopezruestes.cat/es/curva-de-Koch
-        </a>{' '}
-        <br />
-        <a
-          href="https://es.wikipedia.org/wiki/Copo_de_nieve_de_Koch"
-          target="_blank"
-        >
-          wikipedia.org/wiki/Copo_de_nieve_de_Koch
-        </a>{' '}
-        <br />
-        <a
-          href="https://larryriddle.agnesscott.org/ifs/ksnow/ksnow.htm"
-          target="_blank"
-        >
-          https://larryriddle.agnesscott.org/ifs/ksnow/ksnow.htm
-        </a>
-      </p>
-    </section>
+    </>
   );
 }

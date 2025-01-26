@@ -1,20 +1,25 @@
 import { useCallback, useEffect, useState } from 'react';
 
-export default function Page() {
-  const CANVAS_WIDTH = 1024;
-  const CANVAS_HEIGHT = 400;
+export default function KochSnowflake() {
+  const CANVAS_WIDTH = 700;
+  const CANVAS_HEIGHT = 700;
   const MAX_ITERATIONS = 5;
   const [iteration, setIteration] = useState<number>(0);
   const [context, setContext] = useState(null);
   const { sqrt, sin, cos, atan2, PI } = Math;
-  const pInitial = {
+  const p0 = {
     x: CANVAS_WIDTH * 0.1,
-    y: CANVAS_HEIGHT * 0.75,
+    y: CANVAS_HEIGHT * 0.28,
   };
 
-  const pFinal = {
+  const p1 = {
     x: CANVAS_WIDTH * 0.9,
-    y: CANVAS_HEIGHT * 0.75, // same as pInitial but can be changed.
+    y: CANVAS_HEIGHT * 0.28, // same as pInitial but can be changed.
+  };
+
+  const p2 = {
+    x: p1.x + cos((PI * 2) / 3) * (p1.x - p0.x),
+    y: p1.y + sin((PI * 2) / 3) * (p1.x - p0.x),
   };
 
   const canvasRef = useCallback((node) => {
@@ -35,7 +40,9 @@ export default function Page() {
       context.restore(); // restores the most recently saved canvas state by popping the top entry in the drawing state stack.
       context.lineWidth = 1;
 
-      koch(pInitial, pFinal, iteration);
+      koch(p0, p1, iteration);
+      koch(p1, p2, iteration);
+      koch(p2, p0, iteration);
     }
   }, [context, iteration]);
 
@@ -102,66 +109,11 @@ export default function Page() {
   function handleReset() {
     setIteration(0);
   }
-
   return (
-    <section>
-      <h2>Curva de Kock</h2>
-      <p>
-        Este es el primer fractal auto-similar descrito en 1904 por el
-        matemático sueco{' '}
-        <b>
-          <a
-            href="https://es.wikipedia.org/wiki/Helge_von_Koch"
-            target="_blank"
-          >
-            Niels Fabian Helge von Koch
-          </a>
-        </b>{' '}
-        (1870-1924). <br />
-      </p>
-      <h3>Construcción</h3>
-      <ol>
-        <li>Se divide una línea en tres segmentos.</li>
-        <li>
-          El segmento de la mitad se convierte en un triángulo equilátero.
-        </li>
-        <li>Se repite el paso 1 y 2 en los lados del triángulo anterior.</li>
-        <li>Se repite el ciclo.</li>
-      </ol>
-      <hr />
-      <p>Clic sobre el rectángulo para generar:</p>
-      <canvas ref={canvasRef} onClick={handleClick} />
+    <>
+      <canvas ref={canvasRef} onClick={handleClick} /> <br />
       Iteration: {iteration} of {MAX_ITERATIONS} <br />
       <button onClick={handleReset}>reset</button>
-      <h3>Propiedades</h3>
-      <ul>
-        <li>Tiene una longitud infinita.</li>
-        <li>Dimensión fractal (D) = ln4/ln3 = 1.272618 (verificar).</li>
-        <li>Es una línea continua no derivable.</li>
-      </ul>
-      <h3>Más información</h3>
-      <p>
-        <a
-          href="https://www.enriclopezruestes.cat/es/curva-de-Koch/"
-          target="_blank"
-        >
-          www.enriclopezruestes.cat/es/curva-de-Koch
-        </a>{' '}
-        <br />
-        <a
-          href="https://es.wikipedia.org/wiki/Copo_de_nieve_de_Koch"
-          target="_blank"
-        >
-          wikipedia.org/wiki/Copo_de_nieve_de_Koch
-        </a>{' '}
-        <br />
-        <a
-          href="https://larryriddle.agnesscott.org/ifs/ksnow/ksnow.htm"
-          target="_blank"
-        >
-          https://larryriddle.agnesscott.org/ifs/ksnow/ksnow.htm
-        </a>
-      </p>
-    </section>
+    </>
   );
 }
