@@ -8,7 +8,7 @@ export default function Page() {
       <p>
         Un fractal es un objeto geométrico caracterizado por presentar una
         estructura que se repite a diferentes escalas; un "patrón sin fin". El
-        término (propuesto por Benoît Mandelbrot en 1975) proviene del latín{' '}
+        término propuesto por Benoît Mandelbrot en 1975 proviene del latín{' '}
         <i>fractus</i> que significa "quebrado" o "fracturado".
       </p>
       <Video
