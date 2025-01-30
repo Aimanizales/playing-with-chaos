@@ -1,3 +1,4 @@
+import Video from '@/components/Video';
 import LogisticMap from '@/components/Fractals/LogisticMap';
 
 export default function Page() {
@@ -44,32 +45,17 @@ export default function Page() {
       <LogisticMap />
 
       <h3>Más información</h3>
-
-      <iframe
-        width="560"
-        height="315"
+      <Video
+        title="Esta ecuación cambiará tu modo de ver el mundo"
+        channel="Veritasium en Español"
         src="https://www.youtube.com/embed/EOvLhZPevm0?si=29JnopNOotUiOrOB"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
+      />
 
-      <br />
-
-      <iframe
-        width="560"
-        height="315"
+      <Video
+        title="This equation will change how you see the world (the logistic map)"
+        channel="Veritasium"
         src="https://www.youtube.com/embed/ovJcsL7vyrk?si=6z3E_dpWsrB-HZ3v"
-        title="YouTube video player"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        referrerpolicy="strict-origin-when-cross-origin"
-        allowfullscreen
-      ></iframe>
-
-      <br />
+      />
 
       <a
         href="https://es.wikipedia.org/wiki/Aplicaci%C3%B3n_log%C3%ADstica"

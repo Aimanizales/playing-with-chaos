@@ -49,6 +49,10 @@ nav li.selected a {
   background-color: #f1f1f1;
 }
 
+iframe {
+  border: 0;
+}
+
 .container {
   display: flex;
   background-color: #f1f1f1;
@@ -96,4 +100,10 @@ section {
 .references-list li a {
   font-size: 0.9rem;
   color: #555;
+}
+
+.video-info {
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  color: #333;
 }

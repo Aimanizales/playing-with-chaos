@@ -1,35 +1,38 @@
 import Koch from '@/components/Fractals/Koch/Koch';
 import KochSnowflake from '@/components/Fractals/Koch/KochSnowflake';
+import Video from '@/components/Video';
 
 export default function Page() {
   return (
     <section>
       <h2>Copo de nieve de Koch</h2>
+      <p>
+        El copo de nieve de Koch, también llamado estrella de Koch o isla de
+        Koch, es una curva cerrada continua pero no diferenciable en ningún
+        punto. Este es el primer fractal auto-similar descrito en 1904 por el
+        matemático sueco{' '}
+        <a href="https://es.wikipedia.org/wiki/Helge_von_Koch" target="_blank">
+          Niels Fabian Helge von Koch
+        </a>{' '}
+        (1870-1924) en un artículo titulado «Acerca de una curva continua que no
+        posee tangentes y obtenida por los métodos de la geometría elemental»
+      </p>
       <KochSnowflake />
       <p>
-        Este es el primer fractal auto-similar descrito en 1904 por el
-        matemático sueco{' '}
-        <b>
-          <a
-            href="https://es.wikipedia.org/wiki/Helge_von_Koch"
-            target="_blank"
-          >
-            Niels Fabian Helge von Koch
-          </a>
-        </b>{' '}
-        (1870-1924). <br />
+        Su construcción más simple se realiza mediante un proceso iterativo que
+        se inicia partiendo en tres un segmento de recta e insertando dos más en
+        el tercero medio a manera de un triángulo equilátero, el proceso se
+        repite infinidad de veces. La curva de Koch es un caso particular de
+        curva de De Rham.
       </p>
-      <h3>Construcción</h3>
-      <ol>
-        <li>Se divide una línea en tres segmentos.</li>
-        <li>
-          El segmento de la mitad se convierte en un triángulo equilátero.
-        </li>
-        <li>Se repite el paso 1 y 2 en los lados del triángulo anterior.</li>
-        <li>Se repite el ciclo.</li>
-      </ol>
+      <Video
+        title="DIMENSIÓN FRACTAL: El Copo de Nieve de Koch ❄️"
+        channel="Mates Mike"
+        src="https://www.youtube.com/embed/eKY_1j9VrEA?si=5DRPsQxv3fEaDAhM"
+      />
       <hr />
       <Koch />
+
       <h3>Propiedades</h3>
       <ul>
         <li>Tiene una longitud infinita.</li>

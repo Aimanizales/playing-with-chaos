@@ -1,3 +1,4 @@
+import Video from '@/components/Video';
 import { books } from './books';
 
 export default function Page() {
@@ -10,6 +11,21 @@ export default function Page() {
         término (propuesto por Benoît Mandelbrot en 1975) proviene del latín{' '}
         <i>fractus</i> que significa "quebrado" o "fracturado".
       </p>
+      <Video
+        title="¿Qué son los fractales?"
+        channel="Derivando"
+        src="https://www.youtube.com/embed/Wea_1L-C9Xo?si=4S4riowsrN0fDTyE"
+      />
+      <Video
+        title="La paradoja de la costa ROMPE LA REALIDAD | Fractales"
+        channel="Lemnismath"
+        src="https://www.youtube.com/embed/uK1unoVNtMs?si=6zQQBtmZA8cp5AmX"
+      />
+      <Video
+        title="Noruega y la paradoja de la costa"
+        channel="Un mundo inmenso"
+        src="https://www.youtube.com/embed/0cq7Hsunr10?si=dvcqy5JVL9XVMtZQ"
+      />
       <h3>Referencias:</h3>
       <ul className="references-list">
         <li>
