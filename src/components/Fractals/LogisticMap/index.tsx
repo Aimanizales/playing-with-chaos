@@ -56,7 +56,8 @@ export default function LogisticMap() {
   //TODO: add reset button
   return (
     <>
-      <p>rate = {reproductionRate}</p>
+      <span style={{ fontSize: '0.7rem' }}>rate = {reproductionRate}</span>{' '}
+      <br />
       <canvas ref={canvasRef} />
     </>
   );
