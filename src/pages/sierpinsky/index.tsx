@@ -5,6 +5,14 @@ export default function Page() {
     <section>
       <h2>Triángulo de Sierpinsky (Sierpinsky Gasket)</h2>
       <SierpinskyTriangle />
+      <p>
+        <a
+          href="https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Sierpinski"
+          target="_blank"
+        >
+          https://es.wikipedia.org/wiki/Tri%C3%A1ngulo_de_Sierpinski
+        </a>
+      </p>
     </section>
   );
 }

@@ -29,11 +29,17 @@ export const books = [
     publishDate: 'Nov/1991',
     link: 'https://www.goodreads.com/book/show/7068547-espejo-y-reflejo',
   },
-  // {
-  //   title: '',
-  //   author: '',
-  //   editorial: '',
-  //   publishDate: '',
-  //   link: '',
-  // },
+];
+
+export const websites = [
+  {
+    link: 'https://paulbourke.net/fractals/',
+    name: 'Fractals, Chaos, Self Similarity',
+    description: 'Collection of fractal, chaos and attractors.',
+  },
+  {
+    link: 'https://bit-101.com/blog/pages/about/',
+    name: 'Bit 101',
+    description: 'Keith Peters personal blog.',
+  },
 ];

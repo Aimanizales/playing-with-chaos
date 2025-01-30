@@ -1,5 +1,5 @@
 import Video from '@/components/Video';
-import { books } from './books';
+import { books } from './references';
 
 export default function Page() {
   return (
@@ -17,6 +17,11 @@ export default function Page() {
         src="https://www.youtube.com/embed/Wea_1L-C9Xo?si=4S4riowsrN0fDTyE"
       />
       <Video
+        title="Caos y complejidad ¿Un desorden ordenado?"
+        channel="Derivando"
+        src="https://www.youtube.com/embed/zrql6aTQgfk?si=f7xYfTQy-NMTRgTF"
+      />
+      <Video
         title="La paradoja de la costa ROMPE LA REALIDAD | Fractales"
         channel="Lemnismath"
         src="https://www.youtube.com/embed/uK1unoVNtMs?si=6zQQBtmZA8cp5AmX"
@@ -28,12 +33,6 @@ export default function Page() {
       />
       <h3>Referencias:</h3>
       <ul className="references-list">
-        <li>
-          Caos y complejidad ¿Un desorden ordenado? <br />
-          <a href="https://www.youtube.com/watch?v=zrql6aTQgfk" target="_blank">
-            youtube.com/watch?v=zrql6aTQgfk
-          </a>
-        </li>
         <li>
           Fractals, Chaos, Self Similarity
           <br />
@@ -164,6 +163,7 @@ export default function Page() {
           and fractals. This site is very clearly written and understandable.
         </li>
       </ul>
+      https://institucional.us.es/blogimus/2018/10/fractales-bellos-y-sin-embargo-utiles/
     </section>
   );
 }
