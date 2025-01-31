@@ -96,6 +96,7 @@ section i {
 .references-list {
   list-style-type: none;
   margin-top: 1rem;
+  padding-left: 0.5rem;
 }
 
 .references-list li {
@@ -103,15 +104,36 @@ section i {
   padding-left: 1rem;
 }
 
-.references-list li .editorial,
-.references-list li .author,
 .references-list li a {
   font-size: 0.9rem;
-  color: #555;
+}
+
+.references-list img {
+  max-width: fit-content;
+  max-height: fit-content;
 }
 
 .video-info {
   font-size: 0.85rem;
   margin-top: 1rem;
   color: #333;
+}
+
+.bibliography-item {
+  display: flex;
+  gap: 1rem;
+  max-width: 600px;
+}
+
+.bibliography-item a,
+.bibliography-item span {
+  display: block;
+}
+
+.bibliography-item a {
+  color: rgb(78, 34, 119);
+}
+
+.editorial {
+  font-size: 0.75rem;
 }
