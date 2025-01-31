@@ -1,15 +1,11 @@
 export const menuItems = [
   {
-    name: 'Index',
+    name: 'Inicio',
     link: '/',
   },
   {
     name: '¿Qué es un fractal?',
     link: '/fractal',
-  },
-  {
-    name: 'Ejemplo canvas',
-    link: '/sample',
   },
   {
     name: 'Copo de nieve de Koch',
@@ -22,6 +18,14 @@ export const menuItems = [
   {
     name: 'Diagrama de bifurcación logística',
     link: '/logistic-map',
+  },
+  {
+    name: 'Bibliografía',
+    link: '/bibliography',
+  },
+  {
+    name: 'Ejemplo canvas',
+    link: '/sample',
   },
   { name: 'Sierpinski non-symmetry (1)' },
   { name: 'Sierpinski random (1)' },
