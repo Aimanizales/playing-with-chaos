@@ -2,16 +2,29 @@
 
 ## Description
 
-All exercises from 2013 Keith Peter's book _Playing with chaos_, originally stored in [playingwithchaos.net](http://playingwithchaos.net) (currently unavailable) being migrated to React/NextJS/Typescript.
+This is a personal project based in the book _Playing with Chaos: Programming Fractals and Strange Attractors in JavaScript (2013)_ by Keith Peters.
+
+All original excercises created by the author using old JS syntax were downloaded from [playingwithchaos.net](http://playingwithchaos.net) –currently unavailable–.
+
+### Objetives
+
+- Improve my knowledge in Javascript and Typescript by migrating original JS files with old syntax to ECMA-2015.
+- Apply –and improve– my knowledge in React and NextJS.
+- To get deep into chaos and fractals.
+- Research about recursion in math functions.
+- Create a library about these topics with personal research and references and (initially in spanish).
 
 ## Setup
 
-1. Checkout to `nextjs-chaos-migration` branch.
-2. `npm install`.
-3. `npm run dev`.
-4. Open `http://localhost:3000/`.
+1. `npm install`.
+2. `npm run dev`.
+3. Open `http://localhost:3000/`.
 
-All original exercises are located in the `/backup` folder. If you want to see all of them, install Live Server extension for VS Code an run a live server.
+To see the original exercises:
+
+1. Install Live Server extension for VS Code.
+2. Run a live server instance.
+3. In browser, go to `/backup` folder.
 
 ## To-Dos
 
