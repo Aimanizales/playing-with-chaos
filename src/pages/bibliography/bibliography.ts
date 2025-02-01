@@ -14,6 +14,7 @@ export const books = [
     author: 'Oliver Linton',
     editorial: 'Wooden Books',
     publishDate: 'Jul/2024',
+    link: 'https://www.goodreads.com/book/show/52558843-fractals',
     image:
       'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1585647325i/52558843.jpg',
   },
@@ -76,14 +77,27 @@ export const books = [
 
 export const websites = [
   {
-    link: 'https://paulbourke.net/fractals/',
-    name: 'Fractals, Chaos, Self Similarity',
-    description: 'Collection of fractal, chaos and attractors.',
+    link: 'http://paulbourke.net/fractals/',
+    name: 'Paul Bourke: Fractals, Chaos, Self Similarity',
+    description:
+      'Collection of fractal, self-similarity, chaos and attractors.',
   },
   {
     link: 'https://bit-101.com/blog/pages/about/',
     name: 'Bit 101',
     description: 'Keith Peters personal blog.',
+  },
+  {
+    link: 'https://github.com/bit101',
+    name: 'Bit101 Github',
+  },
+  {
+    link: 'https://www.fretzcastano.com/',
+    name: 'fretzcastano.com',
+  },
+  {
+    link: 'https://github.com/kukovisuals',
+    name: 'Freddy Castano',
   },
   {
     link: 'https://sprott.physics.wisc.edu/SA.HTM',
@@ -92,25 +106,15 @@ export const websites = [
   },
   {
     link: 'https://www.wolframscience.com/',
-    name: 'wolframscience.com',
+    name: 'Wolfram Science',
     description:
       "Wolfram Science and Stephen Wolfram's 'A New Kind of Science'",
   },
   {
     link: 'https://sprott.physics.wisc.edu/pickover/home.htm',
     name: "Clifford A. Pickover's",
-    description: 'sprott.physics.wisc.edu/pickover/home.htm',
-  },
-  {
-    link: 'http://sprott.physics.wisc.edu/',
-    name: "Sprott's Gateway",
     description:
-      'Sprott is the author of the book on strange attractors mentioned just previously. There are many other fractal resources listed on his page.',
-  },
-  {
-    link: 'http://paulbourke.net/fractals/',
-    name: 'paulbourke.net/fractals',
-    description: 'Fractals, Chaos, Self Similarity',
+      " Clint Sprott's web server in the Physics Department at the University of Wisconsin - Madison",
   },
   {
     link: 'http://classes.yale.edu/fractals/',
@@ -119,11 +123,15 @@ export const websites = [
       'A fantastic resource for just about all aspects of chaos theory and fractals. This site is very clearly written and understandable.',
   },
   {
-    name: 'Fractales bellos y sin embargo, útiles',
     link: 'https://institucional.us.es/blogimus/2018/10/fractales-bellos-y-sin-embargo-utiles/',
+    name: 'Fractales bellos y sin embargo, útiles',
+    description:
+      'Blog del Instituto de Matemáticas de la Universidad de Sevilla',
   },
   {
-    name: 'Coding Math: Episode 35 - Intro to Fractals',
-    link: 'https://www.youtube.com/watch?v=bIfNwgUVjV8&list=PL7wAPgl1JVvWZPcT0fEfSv5EhLbfWFfVC&ab_channel=CodingMath',
+    link: 'https://www.youtube.com/@codingmath',
+    name: 'Coding Math',
+    description:
+      "Keith Peters's Coding Math is an ongoing series of video tutorials designed to teach you the math you need to understand as a programmer.",
   },
 ];

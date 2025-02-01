@@ -62,7 +62,7 @@ export const BibliographyItem = ({
         {link && (
           <>
             <a href={link} target="_blank">
-              Ver más
+              {link}
             </a>
           </>
         )}

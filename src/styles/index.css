@@ -22,6 +22,7 @@ footer {
 nav {
   list-style-type: none;
   padding: 1rem;
+  width: 200px;
   min-width: 200px;
   background-color: #e8e8e8;
 }
@@ -43,7 +44,7 @@ nav li a {
 nav li a:hover,
 nav li.selected a {
   background-color: #f1f1f1;
-  font-weight: 700;
+  font-weight: 600;
 }
 
 iframe {
@@ -82,15 +83,12 @@ section {
   max-width: 1020px;
 }
 
-section p {
+section p,
+section li {
   color: #444;
-  font-size: 0.9rem;
-  line-height: 1.3rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
   max-width: 600px;
-}
-
-section i {
-  background-color: #fff;
 }
 
 .references-list {

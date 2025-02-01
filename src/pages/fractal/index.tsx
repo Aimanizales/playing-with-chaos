@@ -1,5 +1,4 @@
 import Video from '@/components/Video';
-import { books } from '../bibliography/bibliography';
 
 export default function Page() {
   return (

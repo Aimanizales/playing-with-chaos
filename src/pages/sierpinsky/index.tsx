@@ -4,6 +4,7 @@ export default function Page() {
   return (
     <section>
       <h2>Triángulo de Sierpinsky (Sierpinsky Gasket)</h2>
+      <p>Pendiente descripción</p>
       <SierpinskyTriangle />
       <p>
         <a

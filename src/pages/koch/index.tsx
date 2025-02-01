@@ -7,9 +7,12 @@ export default function Page() {
     <section>
       <h2>Copo de nieve de Koch</h2>
       <p>
-        El copo de nieve de Koch, también llamado estrella de Koch o isla de
-        Koch, es una curva cerrada continua pero no diferenciable en ningún
-        punto. Este es el primer fractal auto-similar descrito en 1904 por el
+        El copo de nieve de Koch, también llamado{' '}
+        <strong>estrella de Koch</strong> o <strong>isla de Koch</strong>, es
+        una curva cerrada continua pero no diferenciable en ningún punto.
+      </p>
+      <p>
+        Este es el primer fractal auto-similar descrito en 1904 por el
         matemático sueco{' '}
         <a href="https://es.wikipedia.org/wiki/Helge_von_Koch" target="_blank">
           Niels Fabian Helge von Koch
