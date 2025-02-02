@@ -6,8 +6,7 @@ type BibliographyItemProps = {
   description?: string;
   bookInfo?: {
     author: string;
-    editorial: string;
-    publishDate: string;
+    edition: string;
   };
   image?: string;
 };
@@ -22,19 +21,18 @@ export const BibliographyItem = ({
   let bookInformation;
 
   if (bookInfo) {
-    const { publishDate = '', editorial = '', author } = bookInfo;
+    const { edition = '', author } = bookInfo;
 
     bookInformation = (
       <>
         {author && <span>{author}</span>}
 
         <div className="editorial">
-          {publishDate &&
-            editorial && ( //TODO: improve validation
-              <>
-                <span>{`${publishDate} ${editorial} `}</span>
-              </>
-            )}
+          {edition && (
+            <>
+              <span>{edition}</span>
+            </>
+          )}
         </div>
       </>
     );

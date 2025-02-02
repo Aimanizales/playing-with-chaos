@@ -3,8 +3,7 @@ export const books = [
     title:
       'Playing with Chaos: Programming Fractals and Strange Attractors in JavaScript',
     author: 'Keith Peters',
-    editorial: 'Edited by Keith Peters',
-    publishDate: '1st Ed. Sep/2013',
+    edition: '1st Ed. Sep/2013 - Edited by Keith Peters',
     link: 'https://www.goodreads.com/book/show/19262140-playing-with-chaos',
     image:
       'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1386426951i/19262140.jpg',
@@ -36,6 +35,15 @@ export const books = [
     link: 'https://www.goodreads.com/book/show/7068547-espejo-y-reflejo',
     image:
       'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1553402609i/7068547.jpg',
+  },
+  {
+    title: 'Fractales para profanos',
+    author: 'Gustavo N. Rubiano O.',
+    editorial: 'Universidad Nacional de Colombia',
+    publishDate: 'Jan/2002',
+    image:
+      'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1696628514i/75926861.jpg',
+    link: 'https://www.goodreads.com/book/show/75926861-fractales-para-profanos-segunda-reimpresi-n',
   },
   {
     title: 'Chaos and Fractals: New Frontiers of Science',
@@ -76,6 +84,11 @@ export const books = [
 ];
 
 export const websites = [
+  {
+    link: 'https://www.bbc.com/mundo/noticias-50604356',
+    name: 'Fractales: qué son esos patrones matemáticos infinitos a los que se les llama "la huella digital de Dios"',
+    description: 'BBC Mundo - 1 diciembre 2019',
+  },
   {
     link: 'http://paulbourke.net/fractals/',
     name: 'Paul Bourke: Fractals, Chaos, Self Similarity',
