@@ -24,6 +24,10 @@ export const menuItems = [
     link: '/bibliography',
   },
   {
+    name: 'Conjunto de Mandelbrot',
+    link: '/mandelbrot',
+  },
+  {
     name: 'Ejemplo canvas',
     link: '/sample',
   },
@@ -42,7 +46,6 @@ export const menuItems = [
   { name: 'Lighting (1)' },
   { name: 'Lindenmayer (2)' },
   { name: 'Lorenz (2)' },
-  { name: 'Mandelbrot (4 + 1)' },
   { name: 'Pickover (1)' },
   { name: 'Population (2)' },
   { name: 'Pytree (3)' },
