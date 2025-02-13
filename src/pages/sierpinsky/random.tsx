@@ -6,9 +6,18 @@ export default function Page() {
     CANVAS_HEIGHT = 768,
     [depth, setDepth] = useState<number>(0),
     [context, setContext] = useState(null),
-    // [triangles, setTriangles] = useState([]),
+    [triangles, setTriangles] = useState([[]]),
     [offset, setOffset] = useState(100),
     [angle, setAngle] = useState(-Math.PI * 0.5);
+
+  const canvasRef = useCallback((node) => {
+    if (node) {
+      node.width = CANVAS_WIDTH;
+      node.height = CANVAS_HEIGHT;
+      const canvasContext = node.getContext('2d');
+      setContext(canvasContext);
+    }
+  }, []);
 
   useEffect(() => {
     let trianglesArray = [];
@@ -19,26 +28,17 @@ export default function Page() {
       });
       setAngle((angle) => (angle += (Math.PI * 2) / 3));
     }
+    setTriangles(trianglesArray);
     console.log('useEffect[] trianglesArray =', trianglesArray);
-    // setTriangles(trianglesArray);
 
-    subdivide();
-    // draw();
+    draw();
+    // subdivide();
   }, []);
 
   // useEffect(() => {
-  //   // subdivide();
-  //   console.log('useEffect[triangles] triangles =', triangles);
-  // }, [triangles]);
-
-  const canvasRef = useCallback((node) => {
-    if (node) {
-      node.width = CANVAS_WIDTH;
-      node.height = CANVAS_HEIGHT;
-      const canvasContext = node.getContext('2d');
-      setContext(canvasContext);
-    }
-  }, []);
+  //   subdivide();
+  //   draw();
+  // }, [context, depth]);
 
   function draw() {
     if (context) {
@@ -71,39 +71,35 @@ export default function Page() {
       p5,
       xxx = offset * 2 - offset; // rename
 
-    console.log('subdivide() triangles =', triangles);
+    for (let j = triangles.length - 1; j >= 0; j -= 1) {
+      triangle = triangles[j];
+      p0 = triangle[0];
+      p1 = triangle[1];
+      p2 = triangle[2];
+      p3 = {
+        x: (p0.x + p1.x) / 2 + Math.random() * xxx,
+        y: (p0.y + p1.y) / 2 + Math.random() * xxx,
+      };
+      p4 = {
+        x: (p1.x + p2.x) / 2 + Math.random() * xxx,
+        y: (p1.y + p2.y) / 2 + Math.random() * xxx,
+      };
+      p5 = {
+        x: (p2.x + p0.x) / 2 + Math.random() * xxx,
+        y: (p2.y + p0.y) / 2 + Math.random() * xxx,
+      };
+      triangles.push([p0, p3, p5]);
+      triangles.push([p3, p1, p4]);
+      triangles.push([p5, p4, p2]);
 
-    // for (let j = triangles.length - 1; j >= 0; j -= 1) {
-    //   triangle = triangles[j];
-    //   p0 = triangle[0];
-    //   p1 = triangle[1];
-    //   p2 = triangle[2];
-    //   p3 = {
-    //     x: (p0.x + p1.x) / 2 + Math.random() * xxx,
-    //     y: (p0.y + p1.y) / 2 + Math.random() * xxx,
-    //   };
-    //   p4 = {
-    //     x: (p1.x + p2.x) / 2 + Math.random() * xxx,
-    //     y: (p1.y + p2.y) / 2 + Math.random() * xxx,
-    //   };
-    //   p5 = {
-    //     x: (p2.x + p0.x) / 2 + Math.random() * xxx,
-    //     y: (p2.y + p0.y) / 2 + Math.random() * xxx,
-    //   };
-    //   triangles.push([p0, p3, p5]);
-    //   triangles.push([p3, p1, p4]);
-    //   triangles.push([p5, p4, p2]);
-
-    //   triangles.splice(j, 1);
-    // }
-    // setOffset((offset) => (offset *= 0.5));
+      triangles.splice(j, 1);
+    }
+    setOffset((offset) => (offset *= 0.5));
   }
 
   function handleClick() {
     if (depth < MAX_DEPTH) {
       setDepth(depth + 1);
-      subdivide();
-      // draw();
     }
   }
 
@@ -114,7 +110,7 @@ export default function Page() {
       <p>
         Iteration {depth}/{MAX_DEPTH}
       </p>
-      {/* <button>Reset</button> */}
+      <button>Reset</button>
       <canvas ref={canvasRef} onClick={handleClick} />
     </section>
   );
