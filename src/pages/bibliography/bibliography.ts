@@ -156,3 +156,37 @@ export const websites = [
       "Wolfram Science and Stephen Wolfram's 'A New Kind of Science'",
   },
 ];
+
+export const videos = [
+  {
+    title:
+      'Qué son los fractales y cómo pueden ayudarnos a entender el universo',
+    channel: 'BBC Mundo',
+    source: 'https://www.youtube.com/embed/4u7TwSwo0rU?si=RmQhL2n_vhq3ZMLH',
+  },
+  {
+    title: '¿Qué son los fractales?',
+    channel: 'Derivando',
+    source: 'https://www.youtube.com/embed/Wea_1L-C9Xo?si=4S4riowsrN0fDTyE',
+  },
+  {
+    title: 'Caos y complejidad ¿Un desorden ordenado?',
+    channel: 'Derivando',
+    source: 'https://www.youtube.com/embed/zrql6aTQgfk?si=f7xYfTQy-NMTRgTF',
+  },
+  {
+    title: 'La paradoja de la costa ROMPE LA REALIDAD | Fractales',
+    channel: 'Lemnismath',
+    source: 'https://www.youtube.com/embed/uK1unoVNtMs?si=6zQQBtmZA8cp5AmX',
+  },
+  {
+    title: 'Noruega y la paradoja de la costa',
+    channel: 'Un mundo inmenso',
+    source: 'https://www.youtube.com/embed/0cq7Hsunr10?si=dvcqy5JVL9XVMtZQ',
+  },
+  {
+    title: '¡Que viva el caos! | El sistema caótico más famoso',
+    channel: 'Derivando',
+    source: 'https://www.youtube.com/embed/dw8dty0-g1k?si=HWSSNHzoJAo1Si_K',
+  },
+];
