@@ -11,6 +11,11 @@ export default function Page() {
         <i>fractus</i> que significa "quebrado" o "fracturado".
       </p>
       <Video
+        title="Qué son los fractales y cómo pueden ayudarnos a entender el universo"
+        channel="BBC Mundo"
+        src="https://www.youtube.com/embed/4u7TwSwo0rU?si=RmQhL2n_vhq3ZMLH"
+      />
+      <Video
         title="¿Qué son los fractales?"
         channel="Derivando"
         src="https://www.youtube.com/embed/Wea_1L-C9Xo?si=4S4riowsrN0fDTyE"
@@ -29,6 +34,11 @@ export default function Page() {
         title="Noruega y la paradoja de la costa"
         channel="Un mundo inmenso"
         src="https://www.youtube.com/embed/0cq7Hsunr10?si=dvcqy5JVL9XVMtZQ"
+      />
+      <Video
+        src="https://www.youtube.com/embed/dw8dty0-g1k?si=HWSSNHzoJAo1Si_K"
+        channel="Derivando"
+        title="¡Que viva el caos! | El sistema caótico más famoso"
       />
     </section>
   );
