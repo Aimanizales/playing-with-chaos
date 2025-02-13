@@ -7,32 +7,13 @@ export default function Page() {
       <h2>Bibliografía</h2>
       <h3>Websites:</h3>
       <ul className="references-list">
-        {websites.map(({ name, link, description }, index) => (
+        {websites.map((itemInfo, index) => (
           <li key={index}>
-            <BibliographyItem
-              name={name}
-              description={description}
-              link={link}
-            />
+            <BibliographyItem {...itemInfo} />
           </li>
         ))}
       </ul>
       <h3>Libros:</h3>
-      <p>Acá una selección de mis favoritos:</p>
-      <ul className="references-list">
-        {books.map(
-          ({ title, author, editorial, publishDate, link, image }, index) => (
-            <li key={index}>
-              <BibliographyItem
-                name={title}
-                link={link}
-                bookInfo={{ author, editorial, publishDate }}
-                image={image}
-              />
-            </li>
-          )
-        )}
-      </ul>
       <p>
         Esta es una lista en mi{' '}
         <a
@@ -41,8 +22,21 @@ export default function Page() {
         >
           Goodreads
         </a>{' '}
-        de libros.
+        de libros sobre caos y fractales. A continuación, una selección de mis
+        favoritos:
       </p>
+      <ul className="references-list">
+        {books.map(({ title, author, edition, link, image }, index) => (
+          <li key={index}>
+            <BibliographyItem
+              name={title}
+              link={link}
+              bookInfo={{ author, edition }}
+              image={image}
+            />
+          </li>
+        ))}
+      </ul>
     </section>
   );
 }

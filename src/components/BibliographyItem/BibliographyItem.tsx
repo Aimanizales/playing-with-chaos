@@ -9,6 +9,7 @@ type BibliographyItemProps = {
     edition: string;
   };
   image?: string;
+  site?: string;
 };
 
 export const BibliographyItem = ({
@@ -16,6 +17,7 @@ export const BibliographyItem = ({
   link,
   description,
   bookInfo,
+  site,
   image,
 }: BibliographyItemProps) => {
   let bookInformation;
@@ -27,7 +29,7 @@ export const BibliographyItem = ({
       <>
         {author && <span>{author}</span>}
 
-        <div className="editorial">
+        <div className="small">
           {edition && (
             <>
               <span>{edition}</span>
@@ -51,18 +53,13 @@ export const BibliographyItem = ({
       )}
       <div className="item-info">
         <strong>{name} </strong>
+        {site && <i className="small">{site}</i>}
         {bookInformation}
-        {description && (
-          <>
-            <span>{description}</span>
-          </>
-        )}
+        {description && <span>{description}</span>}
         {link && (
-          <>
-            <a href={link} target="_blank">
-              {link}
-            </a>
-          </>
+          <a href={link} target="_blank" className="small">
+            {link}
+          </a>
         )}
       </div>
     </div>
