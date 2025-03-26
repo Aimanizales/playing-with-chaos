@@ -11,6 +11,12 @@ export default function Page() {
         channel="Quanta Magazine"
         src="https://www.youtube.com/embed/u9GAnW8xFJY?si=Jj7HrWZUi2BvIBnB"
       />
+
+      <Video
+        title="What's so special about the Mandelbrot Set?"
+        channel="Numberphile"
+        src="https://www.youtube.com/embed/FFftmWSzgmk?si=mc1-pGqCLDfZ91oP"
+      />
     </section>
   );
 }

@@ -12,16 +12,12 @@ export const menuItems = [
     link: '/koch',
   },
   {
-    name: 'Triángulo de Sierpinski',
+    name: 'Triángulo de Sierpińsky',
     link: '/sierpinsky',
   },
   {
     name: 'Diagrama de bifurcación logística',
     link: '/logistic-map',
-  },
-  {
-    name: 'Bibliografía',
-    link: '/bibliography',
   },
   {
     name: 'Conjunto de Mandelbrot',
@@ -30,6 +26,10 @@ export const menuItems = [
   {
     name: 'Ejemplo canvas',
     link: '/sample',
+  },
+  {
+    name: 'Bibliografía',
+    link: '/bibliography',
   },
   { name: 'Sierpinski non-symmetry (1)' },
   { name: 'Sierpinski random (1)' },
